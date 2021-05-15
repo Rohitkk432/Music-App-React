@@ -1,7 +1,7 @@
 import React from 'react';
 import './loginpage.css'
-import LoginNav from './loginnav'
-import LoginPageContainer from './loginpagecontainer'
+import LoginNav from './login_page_components/loginnav'
+import LoginPageContainer from './login_page_components/loginpagecontainer'
 
 
 function LoginPage(){

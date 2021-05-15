@@ -1,7 +1,7 @@
 import React from "react";
 import LoginPoster from "./loginposter";
-import GoogleLogin from './googlelogin'
-import "./loginpagecontainer.css"
+import GoogleLogin from './googlelogin';
+import "./loginpagecontainer.css";
 
 
 function LoginPageContainer(){

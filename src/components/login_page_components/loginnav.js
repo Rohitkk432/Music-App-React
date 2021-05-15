@@ -1,6 +1,6 @@
 import React from 'react';
-import './loginnav.css'
-import logo from '../images/logo.png'
+import './loginnav.css';
+import logo from '../../images/logo.png';
 
 function LoginNav (){
     return (
