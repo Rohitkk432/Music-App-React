@@ -5,7 +5,9 @@ import poster from '../../images/Poster Music-app.png';
 function LoginPoster (){
     return (
         <>
-            <img className="poster-side" src={poster} alt="poster" />
+            <div className="poster-container">
+                <img className="poster-side" src={poster} alt="poster" />
+            </div>
         </>
     )
 }

@@ -1,5 +1,22 @@
+.poster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90.5vh;
+    width: 75vw;
+}
 .poster-side {
     /* height: 34.5rem; */
     height: 90.5vh;
     width: 75vw;
+}
+@media screen and (max-width: 1150px) {
+    .poster-container {
+        height: 65vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+    .poster-side {
+        width: 100vw;
+    }
 }

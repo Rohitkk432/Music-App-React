@@ -32,3 +32,22 @@
     margin: 1.8rem;
     font-size: 1rem;
 }
+@media screen and (max-width: 1150px) {
+    .login-side {
+        height: 25vh;
+        width: 80vw;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 40px;
+    }
+    .app-name,
+    .makers-org {
+        display: none;
+    }
+    .logintext {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
