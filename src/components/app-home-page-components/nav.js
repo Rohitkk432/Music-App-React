@@ -1,6 +1,8 @@
 import React ,{useState} from 'react';
 import './nav.css';
 import logo from '../../images/logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Nav (){
     const [isHidden ,setIsHidden] = useState(true);
@@ -16,7 +18,7 @@ function Nav (){
                         <p className="nav-elements">Queue</p>
                     </div>
                     <div className="profile-pic"></div>
-                    <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><i className="fa fa-bars" aria-hidden="true"></i></div>
+                    <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>
                 </div>
             </nav>
         </>
