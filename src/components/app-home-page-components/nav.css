@@ -1,0 +1,109 @@
+.nav {
+    height: 9.5vh;
+    background-color: #333333;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*Nav elements*/
+.logo-img {
+    height: 9vh;
+    margin: 0.25vh;
+    margin-top: 0.9vh;
+    margin-left: 0.7vw;
+}
+.hamburger {
+    display: none;
+}
+
+.nav-tabs {
+    display: inline-flex;
+    align-items: flex-end;
+    margin-bottom: 2vh;
+    z-index: 1;
+}
+
+.nav-elements {
+    padding: 0px 15px;
+    margin: 0px 8px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: whitesmoke;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-elements:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.profile-pic {
+    margin-top: 0.9vh;
+    margin-right: 0.9vw;
+    height: 7.5vh;
+    width: 4vw;
+    border-radius: 50%;
+    background-color: white;
+}
+
+/*MOBILE QUERY*/
+@media screen and (max-width: 650px) {
+    .profile-pic {
+        width: 7.5vw;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .profile-pic {
+        width: 10vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .nav-tabs {
+        background-image: linear-gradient(to bottom right, rgb(59, 55, 78), rgb(58, 65, 123));
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        align-items: center;
+        top: 3.6rem;
+        width: 30%;
+        height: 100%;
+    }
+    .logo-div {
+        margin-right: auto;
+    }
+    .nav-elements {
+        border-radius: 0px;
+        width: 10rem;
+        font-size: xx-large;
+        margin: 25px 10px;
+        padding: 6px 10px;
+        color: black;
+    }
+    .hidden1 {
+        display: none;
+    }
+    .hamburger {
+        display: contents;
+        font-size: xx-large;
+    }
+    .hamburger:hover {
+        cursor: pointer;
+    }
+    .fa-bars {
+        align-self: center;
+        padding: 15px;
+    }
+    .logo-image {
+        margin-right: auto;
+    }
+}

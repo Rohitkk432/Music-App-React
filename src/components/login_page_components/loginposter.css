@@ -1,14 +1,36 @@
 .poster-container {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 90.5vh;
     width: 75vw;
 }
 .poster-side {
-    /* height: 34.5rem; */
     height: 90.5vh;
-    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+}
+.postercomponent {
+    width: 15rem;
+}
+.component1 {
+    transform: rotateZ(20deg);
+}
+.component3 {
+    transform: rotateZ(-20deg);
+}
+.component6 {
+    transform: rotateZ(20deg);
+}
+.component4 {
+    transform: rotateZ(-20deg);
+}
+.main-poster {
+    width: 30rem;
 }
 @media screen and (max-width: 1150px) {
     .poster-container {
@@ -16,7 +38,26 @@
         width: 100vw;
         overflow: hidden;
     }
-    .poster-side {
+}
+@media screen and (max-width: 950px) {
+    .poster-container {
+        height: 65vh;
         width: 100vw;
+        overflow: hidden;
+        flex-direction: column;
+    }
+    .main-poster {
+        width: 25rem;
+    }
+    .poster-side {
+        flex-direction: row;
+    }
+    .postercomponent {
+        width: 12rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .main-poster {
+        width: 22rem;
     }
 }
