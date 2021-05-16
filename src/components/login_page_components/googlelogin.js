@@ -1,4 +1,4 @@
-/* global gapi */
+// /* global gapi */ 
 import React from 'react';
 import './googlelogin.css';
 import {Link} from 'react-router-dom';
