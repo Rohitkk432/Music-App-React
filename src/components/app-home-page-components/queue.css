@@ -9,36 +9,40 @@
 .queue-title {
     font-size: 34px;
     color: black;
-    padding: 5px;
-    padding-left: 50px;
+    padding-left: 20px;
 }
-.list-of-queue {
+/* .list-of-queue {
     height: 85%;
-}
+} */
 .queue-list-box {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 15px;
-    height: 52px;
+    height: 3.2rem;
     margin: 15px;
-    width: 80%;
+    width: 25rem;
 }
 
-@media screen and (max-width: 950px) {
-    .queue-list-box {
-        height: 50px;
-        width: 80%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-}
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1050px) {
     .queue {
         width: 90%;
         margin: auto;
+        align-items: center;
+    }
+    .queue-title {
+        font-size: 34px;
+        color: black;
+        padding-left: 0;
+    }
+    .queue-list-box {
+        height: 3.2rem;
+        margin: 15px;
+        width: 25rem;
     }
 }
-@media screen and (max-width: 500px) {
-    .queue {
-        display: none;
+@media screen and (max-width: 480px) {
+    .queue-list-box {
+        height: 3.2rem;
+        margin: 15px;
+        width: 18rem;
     }
 }

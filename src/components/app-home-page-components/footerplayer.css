@@ -11,13 +11,3 @@
     padding: 0px 10px;
     font-size: 22px;
 }
-
-@media screen and (max-width: 700px) {
-    .song-artist {
-        bottom: 10px;
-        left: 20px;
-    }
-    .song-name {
-        font-size: large;
-    }
-}

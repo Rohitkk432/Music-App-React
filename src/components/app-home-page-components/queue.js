@@ -1,5 +1,6 @@
 import React from 'react';
 import './queue.css';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 function Queue(){
     return(
@@ -7,12 +8,18 @@ function Queue(){
             <div className="queue">
                 <div className="queue-title">Queue</div>
                 <div className="list-of-queue">
-                    <div className="queue-list-box"></div>
-                    <div className="queue-list-box"></div>
-                    <div className="queue-list-box"></div>
-                    <div className="queue-list-box"></div>
-                    <div className="queue-list-box"></div>
-                    <div className="queue-list-box"></div>
+                    <Scrollbars style={{ width: "27rem", height: "25rem" }}>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                        <div className="queue-list-box"></div>
+                    </Scrollbars>
                 </div>
             </div>
         </>
