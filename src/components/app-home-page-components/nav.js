@@ -1,21 +1,45 @@
+/* global gapi */
 import React ,{useState} from 'react';
 import './nav.css';
 import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
+
 
 function Nav (){
+    let signedout=false;
     const [isHidden ,setIsHidden] = useState(true);
+    // function onLoad() {
+    //     gapi?.load('auth2', function() {
+    //         gapi?.auth2.init();
+    //     });
+    // }
+    function makegapi() {
+        gapi?.load('auth2', function() {
+            gapi?.auth2.init();
+        });
+    }
+    function signOut() {
+        var auth2 = gapi?.auth2?.getAuthInstance();
+        auth2?.signOut().then(function () {
+            console.log('User signed out.');
+        });
+        signedout=true;
+    }
     return (
         <>
             <nav>
-                <div className="nav">
+                <div onLoad={makegapi} className="nav">
                     <div className="logo-div"><img className="logo-img" src={logo} alt="logo" /></div>
                     <div className={isHidden ? "hidden1 nav-tabs" : "nav-tabs"}>
-                        <p className="nav-elements home-nav">Home</p>
-                        <p className="nav-elements">Playlist</p>
-                        <p className="nav-elements">Liked</p>
-                        <p className="nav-elements">Queue</p>
+                        <div className="nav-elements home-nav">Home</div>
+                        <div className="nav-elements">Playlist</div>
+                        <div className="nav-elements">Liked</div>
+                        <div className="nav-elements">Queue</div>
+                        <Link to={{pathname:"/",state:{signedout}}}>
+                            <div className="nav-elements" onClick={signOut()}>Sign out</div>
+                        </Link>
                     </div>
                     <div className="profile-pic"></div>
                     <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>
