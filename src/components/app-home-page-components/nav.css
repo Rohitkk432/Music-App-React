@@ -111,10 +111,18 @@
 }
 @media screen and (max-width: 620px) {
     .nav-elements {
-        width: 80%;
+        /* width: 80%; */
+        width: 7rem;
         font-size: 1.6rem;
     }
     .nav-tabs {
         height: 32%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .nav-elements {
+        /* width: 80%; */
+        width: 5rem;
+        font-size: 1.6rem;
     }
 }

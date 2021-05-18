@@ -1,0 +1,33 @@
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.playlist-title {
+    color: black;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.playlist-list-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 0.75rem;
+    height: 4.5rem;
+    width: 30rem;
+    margin: 7px;
+}
+@media screen and (max-width: 1000px) {
+    .playlist-title {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 620px) {
+    .playlist-list-box {
+        width: 23rem;
+    }
+}

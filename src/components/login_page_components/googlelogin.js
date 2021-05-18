@@ -4,15 +4,15 @@ import './googlelogin.css';
 import {Link} from 'react-router-dom';
 
 function GoogleLogin(){
-    let email;
-    let logged=false;
+    // let email;
+    // let logged=false;
 
-    function onSignIn(googleUser) {
-        var profile = googleUser?.getBasicProfile();
-        email = profile?.getEmail(); 
-        console.log(email);
-        logged=true;
-    }
+    // function onSignIn(googleUser) {
+    //     var profile = googleUser?.getBasicProfile();
+    //     email = profile?.getEmail(); 
+    //     console.log(email);
+    //     logged=true;
+    // }
     // function signOut() {
     //     var auth2 = gapi.auth2?.getAuthInstance();
     //     auth2?.signOut().then(function () {
@@ -45,14 +45,14 @@ function GoogleLogin(){
                         <div className="bits-disclaimer">Sign in using</div>
                         <div className="bits-disclaimer">BITS mail</div>
                     </div>
-                    <Link to={{pathname:"/home",state:{logged}}} >
+                    {/* <Link to={{pathname:"/home",state:{logged}}} >
                         <div className="g-signin2" data-width="220" data-height="60" data-onsuccess={onSignIn()}></div>
-                    </Link>
+                    </Link> */}
                     {/* <button className="logoutbutton" onClick={signOut()}>Sign out</button> */}
 
-                    {/* <Link to='/home'>
+                    <Link to='/home'>
                         <button className='loginbtn'>LOGIN</button>
-                    </Link> */}
+                    </Link>
                     {/* <button className='logoutbtn'>LOGOUT</button> */}
                 </div>
             </div>
