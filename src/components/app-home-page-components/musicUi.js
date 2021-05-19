@@ -16,7 +16,7 @@ function MusicUI(){
                     <div className="music-player">
                         <div className="music-controls">
                             <div onClick={() => setIsUp(!isUp)} className="arrow-down">
-                                <FontAwesomeIcon icon={faAngleDown} aria-hidden="true" />
+                                <FontAwesomeIcon className="arrows" icon={faAngleDown} aria-hidden="true" />
                             </div>
                             <Player />
                         </div>
@@ -27,7 +27,7 @@ function MusicUI(){
                 <div className={isUp ? "hidden" : ""}>
                     <div className="foot-music-controls">
                         <div onClick={() => setIsUp(!isUp)} className="arrow-up">
-                            <FontAwesomeIcon icon={faAngleUp} aria-hidden="true" />
+                            <FontAwesomeIcon className="arrows" icon={faAngleUp} aria-hidden="true" />
                         </div>
                         <div className="footer-player">
                             <FooterPlayer />

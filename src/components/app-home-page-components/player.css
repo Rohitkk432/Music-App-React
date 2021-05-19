@@ -19,10 +19,14 @@
     font-size: 25px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
     .box-image {
         width: 18rem;
         height: 9rem;
         margin-top: 0;
+    }
+    .icons {
+        margin: 7px;
+        font-size: 20px;
     }
 }

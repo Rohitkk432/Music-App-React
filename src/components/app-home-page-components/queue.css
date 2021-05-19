@@ -24,7 +24,6 @@
 
 @media screen and (max-width: 1050px) {
     .queue {
-        width: 90%;
         margin: auto;
         align-items: center;
     }
@@ -33,16 +32,11 @@
         color: black;
         padding-left: 0;
     }
-    .queue-list-box {
-        height: 3.2rem;
-        margin: 15px;
-        width: 25rem;
-    }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
     .queue-list-box {
         height: 3.2rem;
         margin: 15px;
-        width: 18rem;
+        width: 19rem;
     }
 }

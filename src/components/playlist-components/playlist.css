@@ -31,3 +31,9 @@
         width: 23rem;
     }
 }
+@media screen and (max-width: 450px) {
+    .playlist-list-box {
+        width: 19rem;
+        height: 3.8rem;
+    }
+}
