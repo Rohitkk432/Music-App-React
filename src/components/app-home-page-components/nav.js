@@ -28,13 +28,11 @@ function Nav (){
     //     auth2?.signOut().then(function () {
     //         console.log('User signed out.');
     //     });
-    //     signedout=true;
     // }
     return (
         <>
             <nav>
                 <div 
-                // onLoad={makegapi}
                 className="nav">
                     <div className="logo-div"><img className="logo-img" src={logo} alt="logo" /></div>
                     <div className={isHidden ? "hidden1 nav-tabs" : "nav-tabs"}>
@@ -46,9 +44,7 @@ function Nav (){
                         </Link>
                         <div className="nav-elements">Liked</div>
                         <div className="nav-elements">Queue</div>
-                        {/* <Link to={{pathname:"/",state:{signedout}}}>
-                            <div className="nav-elements" onClick={signOut()}>Sign out</div>
-                        </Link> */}
+                        {/* <div className="nav-elements" onClick={signOut()}>Sign out</div> */}
                     </div>
                     <div className="profile-pic"></div>
                     <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>
