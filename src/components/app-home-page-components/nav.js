@@ -1,34 +1,15 @@
-// /* global gapi */
 import React ,{useState} from 'react';
 import './nav.css';
 import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
+import SignoutButtton from './signoutbutton';
 
 
 function Nav (){
-    // let signedout=false;
     const [isHidden ,setIsHidden] = useState(true);
 
-    // function onLoad() {
-    //     gapi?.load('auth2', function() {         //i dont think is required
-    //         gapi?.auth2.init();
-    //     });
-    // }
-
-
-    // function makegapi() {
-    //     gapi?.load('auth2', function() {
-    //         gapi?.auth2.init();
-    //     });
-    // }
-    // function signOut() {
-    //     var auth2 = gapi?.auth2?.getAuthInstance();
-    //     auth2?.signOut().then(function () {
-    //         console.log('User signed out.');
-    //     });
-    // }
     return (
         <>
             <nav>
@@ -44,7 +25,7 @@ function Nav (){
                         </Link>
                         <div className="nav-elements">Liked</div>
                         <div className="nav-elements">Queue</div>
-                        {/* <div className="nav-elements" onClick={signOut()}>Sign out</div> */}
+                        <SignoutButtton />
                     </div>
                     <div className="profile-pic"></div>
                     <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>

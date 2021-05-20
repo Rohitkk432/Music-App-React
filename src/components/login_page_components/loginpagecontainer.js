@@ -1,6 +1,6 @@
 import React from "react";
 import LoginPoster from "./loginposter";
-import GoogleLogin from './googlelogin';
+import Login from './googlelogin';
 import "./loginpagecontainer.css";
 
 
@@ -9,7 +9,7 @@ function LoginPageContainer(){
         <>
             <div className="login-page-container">
                 <LoginPoster/>
-                <GoogleLogin />
+                <Login />
             </div>
         </>
     )
