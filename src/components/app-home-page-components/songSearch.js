@@ -19,7 +19,7 @@ function SongSearch(){
                 _song.singer.toLowerCase().includes(search.toLowerCase())
             );
         });
-    }, [search, songsList]);
+    }, [search]);
 
     return(
         <div className="search-container">
