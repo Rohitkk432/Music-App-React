@@ -5,12 +5,16 @@ import Queue from './queue';
 import FooterPlayer from './footerplayer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import SongSearch from './songSearch';
 
 
 function MusicUI(){
     const [isUp , setIsUp] = useState(false);
     return(
-        <>
+        <>  
+            <div className={isUp ? "hidden" : ""}>
+                <SongSearch />
+            </div>
             <div className="musicUi">
                 <div className={isUp ? "" : "hidden"}>
                     <div className="music-player">
