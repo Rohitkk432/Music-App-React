@@ -3,11 +3,11 @@ import './googlelogin.css';
 import { GoogleLogin } from 'react-google-login';
 import {useHistory} from 'react-router-dom';
 
-// var currentUser;
+var currentUser;
 function Login () {
         let history = useHistory();
         const onSuccess = (res)=>{
-            const currentUser = res.profileObj.email;
+            currentUser = res.profileObj.email;
             console.log(currentUser);
             history.push('/home');
         }
@@ -41,4 +41,4 @@ function Login () {
         )    
 }
 
-export default Login ;
+export default Login;

@@ -265,4 +265,4 @@ const delPlaylist = async function(user_id,playlist_number){
 
 //=================================================================================================//
 
-export default {checkExistingUser , registerNewUser , getAllSongs , getFullQueue , checkSongInQueue , addSongInQueue , delSongInQueue , delQueue , getFullLiked , checkSongInLiked , addSongInLiked , delSongInLiked , delLiked , getFullPlaylist , checkSongInPlaylist , addSongInPlaylist , delSongInPlaylist , delPlaylist };
+export {checkExistingUser , registerNewUser , getAllSongs , getFullQueue , checkSongInQueue , addSongInQueue , delSongInQueue , delQueue , getFullLiked , checkSongInLiked , addSongInLiked , delSongInLiked , delLiked , getFullPlaylist , checkSongInPlaylist , addSongInPlaylist , delSongInPlaylist , delPlaylist };

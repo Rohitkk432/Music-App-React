@@ -29,3 +29,14 @@
         width: 100%;
     }
 }
+@media screen and (max-width: 460px) {
+    .playlist-option-half {
+        font-size: 1.1rem;
+    }
+    .playlist-options {
+        margin: 0.5rem;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+    }
+}

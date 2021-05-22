@@ -16,6 +16,10 @@
 } */
 .queue-list-box {
     background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     border-radius: 15px;
     height: 3.2rem;
     margin: 15px;
@@ -33,10 +37,59 @@
         padding-left: 0;
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 510px) {
     .queue-list-box {
-        height: 3.2rem;
-        margin: 15px;
         width: 19rem;
+    }
+}
+
+.Q-cover-img 
+/* img */ {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 11px;
+    background-color: black;
+}
+.Q-result-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2.6rem;
+    width: 14rem;
+    background-color: blueviolet;
+}
+.Q-result-title {
+    height: 1.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+    font-weight: bold;
+}
+.Q-result-artist-duration {
+    height: 1.1rem;
+    font-size: 0.6rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.Q-result-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 2.8rem;
+    width: 6rem;
+}
+.Q-icons-option {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+@media screen and (max-width: 510px) {
+    .Q-result-info {
+        width: 11rem;
+    }
+    .Q-result-options {
+        width: 4rem;
     }
 }

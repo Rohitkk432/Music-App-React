@@ -15,9 +15,13 @@
 .playlist-list-box {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 0.75rem;
-    height: 4.5rem;
+    height: 4rem;
     width: 30rem;
     margin: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 @media screen and (max-width: 1000px) {
     .playlist-title {
@@ -31,9 +35,89 @@
         width: 23rem;
     }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 460px) {
     .playlist-list-box {
         width: 19rem;
         height: 3.8rem;
+    }
+}
+
+.P-cover-img 
+/* img */ {
+    height: 2.8rem;
+    width: 2.8rem;
+    border-radius: 11px;
+    background-color: black;
+}
+.P-result-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 2.8rem;
+    width: 18rem;
+    background-color: blueviolet;
+}
+.P-result-title {
+    height: 1.6rem;
+    font-size: 1.3rem;
+    width: 100%;
+    font-weight: bold;
+}
+.P-result-artist-duration {
+    height: 1.2rem;
+    font-size: 0.7rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.P-result-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 2.8rem;
+    width: 6rem;
+}
+.P-icons-option {
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+@media screen and (max-width: 620px) {
+    .P-result-info {
+        width: 15rem;
+    }
+    .P-result-options {
+        width: 4rem;
+    }
+    .P-icons-option {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+@media screen and (max-width: 460px) {
+    .P-cover-img 
+    /* img */ {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 8px;
+    }
+    .P-result-info {
+        width: 12rem;
+    }
+    .P-result-title {
+        font-size: 1.1rem;
+    }
+    .P-result-artist-duration {
+        font-size: 0.5rem;
+    }
+    .P-result-options {
+        width: 3rem;
+    }
+    .P-icons-option {
+        margin-left: 4px;
+        margin-right: 4px;
     }
 }

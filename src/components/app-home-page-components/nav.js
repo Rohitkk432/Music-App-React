@@ -23,11 +23,11 @@ function Nav (){
                         <Link to='/playlist/1'>
                             <div className="nav-elements">Playlist</div>
                         </Link>
-                        <div className="nav-elements">Liked</div>
-                        <div className="nav-elements">Queue</div>
+                        <Link to='/liked'>
+                            <div className="nav-elements">Liked</div>
+                        </Link>
                         <SignoutButtton />
                     </div>
-                    <div className="profile-pic"></div>
                     <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>
                 </div>
             </nav>
