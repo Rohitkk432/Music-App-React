@@ -3,11 +3,12 @@ import './googlelogin.css';
 import { GoogleLogin } from 'react-google-login';
 import {useHistory} from 'react-router-dom';
 
+// var currentUser;
 function Login () {
         let history = useHistory();
         const onSuccess = (res)=>{
-            let email = res.profileObj.email;
-            console.log(email);
+            const currentUser = res.profileObj.email;
+            console.log(currentUser);
             history.push('/home');
         }
         const onFailure =(res)=>{
