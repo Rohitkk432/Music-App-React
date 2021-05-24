@@ -76,9 +76,11 @@ const getAllSongs = async function(){
 //Queue Methods
 //getting full queue of a user
 const getFullQueue = async function(user_id){
+    console.log("bye");
     const response = await fetch(`http://localhost:5000/queue/${user_id}`)
-        .then((res)=>res.json())
+        .then((res)=> res.json())
         .then((queueList)=>{
+            console.log("rohit");
             return queueList;
         })
         .catch((err)=>console.log(err));

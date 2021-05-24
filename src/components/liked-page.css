@@ -143,3 +143,45 @@
         margin-right: 7px;
     }
 }
+
+.L-hidden2 {
+    display: none;
+}
+.L-add-btn {
+    position: relative;
+    overflow: visible;
+}
+
+/* modal */
+.L-add-modal {
+    position: absolute;
+    top: 1.5rem;
+    left: -1rem;
+    z-index: 3;
+    width: 6rem;
+    height: 8rem;
+    font-size: 1.1rem;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+.L-modal-options {
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 5rem;
+    height: 1.3rem;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.L-modal-options:hover {
+    background-color: darkgray;
+    color: white;
+    text-decoration: none;
+}

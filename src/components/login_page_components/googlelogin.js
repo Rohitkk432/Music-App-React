@@ -51,6 +51,7 @@ function Login () {
                             prompt="select_account"
                             uxMode="popup"
                             redirectUri="https://musicprox.netlify.app/home"
+                            isSignedIn={true}
                             onSuccess={onSuccess}
                             onFailure={onFailure}
                             cookiePolicy={'single_host_origin'}
