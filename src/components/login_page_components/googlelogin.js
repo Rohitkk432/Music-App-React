@@ -2,18 +2,37 @@ import React from 'react';
 import './googlelogin.css';
 import { GoogleLogin } from 'react-google-login';
 import {useHistory} from 'react-router-dom';
+import {checkExistingUser,registerNewUser} from '../../methods';
 
 var currentUser;
+var currentId;
 function Login () {
         let history = useHistory();
         const onSuccess = (res)=>{
             currentUser = res.profileObj.email;
+            checkOfUser();
             console.log(currentUser);
             history.push('/home');
         }
         const onFailure =(res)=>{
             console.log(res);
         }
+        
+        function checkOfUser(){
+            checkExistingUser(currentUser)
+            .then((res)=>{
+                if(res){
+                    currentId=res.id;
+                }else{
+                    registerNewUser(currentUser)
+                    .then((resp)=>{
+                        currentId=resp.id;
+                    })
+                }
+            })
+        }
+
+        
 
         return(
             <div className="login-side">
@@ -40,5 +59,5 @@ function Login () {
                 </div>
         )    
 }
-
+export {currentUser,currentId};
 export default Login;

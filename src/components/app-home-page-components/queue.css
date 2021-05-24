@@ -43,12 +43,11 @@
     }
 }
 
-.Q-cover-img 
-/* img */ {
+.Q-cover-img img {
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 11px;
-    background-color: black;
+    /* background-color: black; */
 }
 .Q-result-info {
     display: flex;
@@ -56,7 +55,7 @@
     align-items: center;
     height: 2.6rem;
     width: 14rem;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 .Q-result-title {
     height: 1.5rem;
@@ -92,4 +91,50 @@
     .Q-result-options {
         width: 4rem;
     }
+}
+
+.hiddenQ {
+    display: none;
+}
+
+.Q-hidden2 {
+    display: none;
+}
+.Q-add-btn {
+    position: relative;
+    overflow: visible;
+}
+
+/* modal */
+.Q-add-modal {
+    position: absolute;
+    top: 1.5rem;
+    left: -1rem;
+    z-index: 3;
+    width: 6rem;
+    height: 8rem;
+    font-size: 1.1rem;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+.Q-modal-options {
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 5rem;
+    height: 1.3rem;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.Q-modal-options:hover {
+    background-color: darkgray;
+    color: white;
+    text-decoration: none;
 }

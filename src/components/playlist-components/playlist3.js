@@ -1,8 +1,9 @@
 import {useState, React} from 'react';
 import './playlist.css';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
+import PlaylistBox from './playlist-box';
+import {getFullPlaylist} from '../../methods';
+import {currentId} from '../login_page_components/googlelogin';
 
 function Playlist3(){
     const [scrollWidth,setScrollWidth]=useState("32rem");
@@ -23,44 +24,25 @@ function Playlist3(){
             setScrollWidth("21rem");
         }
     }
+    
+    let fullPlaylist3;
+    getFullPlaylist(currentId,3)
+        .then((res)=>{
+            fullPlaylist3=res;
+        })
+
     return(
         <>
             <div className="playlist-list">
                 <div className="playlist-title">Playlist 3</div>
                 <Scrollbars style={{width:scrollWidth, height: "25rem"}}>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
-                    <PlaylistBox/>
+                    {fullPlaylist3?.map((song, idx) => (
+                            <PlaylistBox {...song} key={idx} />
+                        ))}
                 </Scrollbars> 
             </div>
         </>
     )
 }
-
-function PlaylistBox(){
-    return(
-        <div className="playlist-list-box">
-            <div className="P-cover-img">
-                {/* <img src="" alt="img" /> */}
-            </div>
-            <div className="P-result-info">
-                <div className="P-result-title"></div>
-                <div className="P-result-artist-duration">
-                    <div className="P-result-artist"></div>
-                    <div className="P-result-duration"></div>
-                </div>
-            </div>
-            <div className="P-result-options">
-                <FontAwesomeIcon className="P-icons-option" icon={faPlus} aria-hidden="true" />
-                <FontAwesomeIcon className="P-icons-option" icon={faHeart} aria-hidden="true" />
-            </div>
-        </div>
-    )
-} 
 
 export default Playlist3 ;

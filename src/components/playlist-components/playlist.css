@@ -42,8 +42,7 @@
     }
 }
 
-.P-cover-img 
-/* img */ {
+.P-cover-img img {
     height: 2.8rem;
     width: 2.8rem;
     border-radius: 11px;
@@ -55,7 +54,7 @@
     align-items: center;
     height: 2.8rem;
     width: 18rem;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 .P-result-title {
     height: 1.6rem;
@@ -98,8 +97,7 @@
     }
 }
 @media screen and (max-width: 460px) {
-    .P-cover-img 
-    /* img */ {
+    .P-cover-img img {
         height: 2.5rem;
         width: 2.5rem;
         border-radius: 8px;
@@ -120,4 +118,46 @@
         margin-left: 4px;
         margin-right: 4px;
     }
+}
+
+.P-hidden2 {
+    display: none;
+}
+.P-add-btn {
+    position: relative;
+    overflow: visible;
+}
+
+/* modal */
+.P-add-modal {
+    position: absolute;
+    top: 1.5rem;
+    left: -1rem;
+    z-index: 3;
+    width: 6rem;
+    height: 8rem;
+    font-size: 1.1rem;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+.P-modal-options {
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 5rem;
+    height: 1.3rem;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.P-modal-options:hover {
+    background-color: darkgray;
+    color: white;
+    text-decoration: none;
 }

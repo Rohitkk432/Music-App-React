@@ -3,7 +3,9 @@ import './songSearch.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 import songsList from "../../songinfo.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch} from '@fortawesome/free-solid-svg-icons';
+import SearchResult from './search-result';
+
 
 function SongSearch(){
 
@@ -38,6 +40,8 @@ function SongSearch(){
         });
     }, [search]);
 
+    // console.log(songs);
+
     return(
         <div className="search-container">
             <div className="searchbar">
@@ -52,7 +56,7 @@ function SongSearch(){
             </div>
             
             <div className="result-container">
-                <Scrollbars style={{ width:scrollWidth, height: "21rem" }}>
+                <Scrollbars style={{ width:scrollWidth, height: "23.5rem" }}>
                     {songs.map((song, idx) => (
                         <SearchResult {...song} key={idx} />
                     ))}
@@ -64,23 +68,3 @@ function SongSearch(){
 
 export default SongSearch;
 
-const SearchResult = function({title,singer,imgpath,duration}){
-    return (
-        <div className="result-box">
-            <div className="cover-img">
-                <img src={imgpath} alt="img" />
-            </div>
-            <div className="result-info">
-                <div className="result-title">{title}</div>
-                <div className="result-artist-duration">
-                    <div className="result-artist">{singer}</div>
-                    <div className="result-duration">{duration}</div>
-                </div>
-            </div>
-            <div className="result-options">
-                <FontAwesomeIcon className="icons-option" icon={faPlus} aria-hidden="true" />
-                <FontAwesomeIcon className="icons-option" icon={faHeart} aria-hidden="true" />
-            </div>
-        </div>
-    );
-}
