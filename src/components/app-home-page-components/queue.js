@@ -7,27 +7,16 @@ import QueueBox from './queue-box';
 // import { render } from '@testing-library/react';
 
 class Queue extends Component{
-// function Queue(){
     constructor(){
         super();
         this.state = { fullQueue: [] };
         
     }
-
-    // const [scrollWidth,setScrollWidth]=useState("27rem");
-    // if(window.innerWidth<510 && scrollWidth!=="21rem"){
-    //     setScrollWidth("21rem");
-    // }else if(window.innerWidth>510 && scrollWidth!=="27rem"){
-    //     setScrollWidth("27rem");}
-    
-    // window.addEventListener("resize", handleResize);
-    // function handleResize(){
-    //     if(window.innerWidth<510 && scrollWidth!=="21rem"){
-    //         setScrollWidth("21rem");
-    //     }else if(window.innerWidth>510 && scrollWidth!=="27rem"){
-    //         setScrollWidth("27rem");}
-    // };
     async componentDidMount() {
+
+        let queueList;
+
+        this.setState({fullQueue:queueList})
 
         await fetch(`http://localhost:5000/queue/${currentId}`)
         .then((res)=> res.json())
@@ -37,6 +26,8 @@ class Queue extends Component{
             this.setState({fullQueue:queueList})
         })
         .catch((err)=>console.log(err));
+
+        // getFullQueue(currentId)
         // .then((res)=>{
         //     this.setState({fullQueue:res})
         //     // fullQueue=res;
@@ -60,7 +51,7 @@ class Queue extends Component{
             <div className="queue">
                 <div className="queue-title">Queue</div>
                 <div className="list-of-queue">
-                    <Scrollbars style={{ width:"33rem", height: "25rem" }}>
+                    <Scrollbars style={{ width:"90%", height: "25rem" }}>
                         {this.state.fullQueue.map((song, idx) => (
                             <QueueBox {...song} key={idx} />
                         ))}

@@ -34,7 +34,7 @@ function LikedBox(props){
     }
 
     return(
-        <div className="queue-list-box">
+        <div className="L-result-box">
             <div className="L-cover-img">
                 <img src={imgpath} alt="img" />
             </div>

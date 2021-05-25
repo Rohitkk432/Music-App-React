@@ -9,24 +9,6 @@ import SearchResult from './search-result';
 
 function SongSearch(){
 
-    const [scrollWidth,setScrollWidth]=useState("37rem");
-    if(window.innerWidth<870 && window.innerWidth>520 && scrollWidth!=="25rem"){
-        setScrollWidth("25rem");
-    }else if(window.innerWidth>870&& scrollWidth!=="37rem"){
-        setScrollWidth("37rem");}
-    else if(window.innerWidth<520 && scrollWidth!=="18.5rem"){
-        setScrollWidth("18.5rem");}
-    
-    window.addEventListener("resize", handleResize);
-    function handleResize(){
-        if(window.innerWidth<870 && window.innerWidth>520 && scrollWidth!=="25rem"){
-            setScrollWidth("25rem");
-        }else if(window.innerWidth>870 && scrollWidth!=="37rem"){
-            setScrollWidth("37rem");}
-        else if(window.innerWidth<520 && scrollWidth!=="18.5rem"){
-            setScrollWidth("18.5rem");}
-    }
-
     const [search, setSearch] = useState("");
 
     const songs = useMemo(() => {
@@ -56,7 +38,7 @@ function SongSearch(){
             </div>
             
             <div className="result-container">
-                <Scrollbars style={{ width:scrollWidth, height: "23.5rem" }}>
+                <Scrollbars style={{ width:"70vw", height: "63vh" }}>
                     {songs.map((song, idx) => (
                         <SearchResult {...song} key={idx} />
                     ))}

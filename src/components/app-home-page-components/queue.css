@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
+    margin: auto;
 }
 
 .queue-title {
@@ -11,9 +11,6 @@
     color: black;
     padding-left: 20px;
 }
-/* .list-of-queue {
-    height: 85%;
-} */
 .queue-list-box {
     background-color: rgba(255, 255, 255, 0.7);
     display: flex;
@@ -23,13 +20,12 @@
     border-radius: 15px;
     height: 3.2rem;
     margin: 15px;
-    width: 25rem;
+    width: 90%;
 }
 
 @media screen and (max-width: 1050px) {
     .queue {
-        margin: auto;
-        align-items: center;
+        width: 80%;
     }
     .queue-title {
         font-size: 34px;
@@ -37,17 +33,13 @@
         padding-left: 0;
     }
 }
-@media screen and (max-width: 510px) {
-    .queue-list-box {
-        width: 19rem;
-    }
-}
 
 .Q-cover-img img {
     height: 2.5rem;
     width: 2.5rem;
+    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 11px;
-    /* background-color: black; */
 }
 .Q-result-info {
     display: flex;
@@ -55,7 +47,6 @@
     align-items: center;
     height: 2.6rem;
     width: 14rem;
-    /* background-color: blueviolet; */
 }
 .Q-result-title {
     height: 1.5rem;
@@ -137,4 +128,9 @@
     background-color: darkgray;
     color: white;
     text-decoration: none;
+}
+@media screen and (max-width: 500px) {
+    .Q-add-modal {
+        left: -2rem;
+    }
 }
