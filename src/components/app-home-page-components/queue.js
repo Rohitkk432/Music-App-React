@@ -1,10 +1,9 @@
 import { React, Component } from 'react';
 import './queue.css';
 import { Scrollbars } from 'react-custom-scrollbars';
-import {getFullQueue} from '../../methods';
+// import {getFullQueue} from '../../methods';
 import {currentId} from '../login_page_components/googlelogin';
 import QueueBox from './queue-box';
-// import { render } from '@testing-library/react';
 
 class Queue extends Component{
     constructor(){
@@ -14,15 +13,10 @@ class Queue extends Component{
     }
     async componentDidMount() {
 
-        let queueList;
-
-        this.setState({fullQueue:queueList})
-
         await fetch(`http://localhost:5000/queue/${currentId}`)
         .then((res)=> res.json())
         .then((queueList)=>{
             console.log("rohit");
-            // return queueList;
             this.setState({fullQueue:queueList})
         })
         .catch((err)=>console.log(err));

@@ -1,30 +1,45 @@
-import {React} from 'react';
+import {Component, React} from 'react';
 import './playlist.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 import PlaylistBox from './playlist-box';
-import {getFullPlaylist} from '../../methods';
+// import {getFullPlaylist} from '../../methods';
 import {currentId} from '../login_page_components/googlelogin';
 
-function Playlist1(){
+class Playlist1 extends Component{
 
-    let fullPlaylist1;
-    getFullPlaylist(currentId,1)
-        .then((res)=>{
-            fullPlaylist1=res;
+    constructor(){
+        super();
+        this.state = { fullPlaylist1: [] };
+        
+    }
+    async componentDidMount() {
+
+        await fetch(`http://localhost:5000/playlist/${currentId}/1`,{
+            method:"GET",
         })
-
-    return(
-        <>
-            <div className="playlist-list">
-                <div className="playlist-title">Playlist 1</div>
-                <Scrollbars style={{width:"80%", height: "57vh"}} >
-                    {fullPlaylist1?.map((song, idx) => (
-                            <PlaylistBox {...song} key={idx} />
-                        ))}
-                </Scrollbars> 
-            </div>
-        </>
-    )
+        .then((res)=>res.json())
+        .then((playlist)=>{
+            console.log("playlist1");
+            this.setState({fullPlaylist1:playlist})
+        })
+        .catch((err)=>console.log(err));
+    
+    }
+    render(){
+        return(
+            <>
+                <div className="playlist-list">
+                    <div className="playlist-title">Playlist 1</div>
+                    <Scrollbars style={{width:"80%", height: "57vh"}} >
+                        {this.state.fullPlaylist1.map((song, idx) => (
+                                <PlaylistBox {...song} key={idx} />
+                            ))}
+                    </Scrollbars> 
+                </div>
+            </>
+        )
+    }
+    
 }
 
 export default Playlist1 ;
