@@ -19,13 +19,13 @@ function Login () {
         
         // 
         async function checkOfUser(){
-            await fetch(`http://localhost:5000/users/${currentUser}`,{ method: "GET"})
+            await fetch(`https://music-pro-x-server.herokuapp.com/users/${currentUser}`,{ method: "GET"})
             .then((resp)=>resp.json())
             .then((res)=>{
                 if(res){
                     currentId=res.id;
                 }else{
-                    fetch('http://localhost:5000/users',{
+                    fetch('https://music-pro-x-server.herokuapp.com/users',{
                         method:"POST",
                         headers:{"Content-Type": "application/json"},
                         body: JSON.stringify({"email":`${currentUser}`})

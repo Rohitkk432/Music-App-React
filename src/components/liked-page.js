@@ -14,7 +14,7 @@ class LikedPage extends Component{
     }
     async componentDidMount() {
 
-        await fetch(`http://localhost:5000/liked/${currentId}`)
+        await fetch(`https://music-pro-x-server.herokuapp.com/liked/${currentId}`)
         .then((res)=>res.json())
         .then((likedList)=>{
             // console.log("liked");

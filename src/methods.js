@@ -1,5 +1,7 @@
 // import React from 'react';
-const link = 'http://localhost:5000'
+// const link = 'http://localhost:5000'
+
+const link = 'https://music-pro-x-server.herokuapp.com';
 //User methods
 //checking if user exists
 const checkExistingUser = async function(email){
