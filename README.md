@@ -6,6 +6,8 @@
 MusicProX is a app where you can search songs . Add songs them to queue ,playlist and liked.
 And play then with the MusicProX player.
 
+**SERVER REPO LINK** - https://github.com/Rohitkk432/musicprox-server.git
+
 ## Table of Contents
 - [Disclaimer](#disclaimer)
 - [Browser Support 🌐](#browser-support)
