@@ -16,7 +16,7 @@ class MusicUI extends Component{
     }
     async componentDidMount() {
 
-        await fetch(`https://safe-eyrie-59676.herokuapp.com/https://music-pro-x-server.herokuapp.com/queue/${currentId}`)
+        await fetch(`http://localhost:5000/queue/${currentId}`)
         .then((res)=> res.json())
         .then((queueList)=>{
             // console.log("queue);

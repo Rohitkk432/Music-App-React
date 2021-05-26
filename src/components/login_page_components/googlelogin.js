@@ -19,13 +19,13 @@ function Login () {
         
         // 
         async function checkOfUser(){
-            await fetch(`https://safe-eyrie-59676.herokuapp.com/https://music-pro-x-server.herokuapp.com/users/${currentUser}`,{ method: "GET"})
+            await fetch(`http://localhost:5000/users/${currentUser}`,{ method: "GET"})
             .then((resp)=>resp.json())
             .then((res)=>{
                 if(res){
                     currentId=res.id;
                 }else{
-                    fetch('https://safe-eyrie-59676.herokuapp.com/https://music-pro-x-server.herokuapp.com/users',{
+                    fetch('http://localhost:5000/users',{
                         method:"POST",
                         headers:{"Content-Type": "application/json"},
                         body: JSON.stringify({"email":`${currentUser}`})
