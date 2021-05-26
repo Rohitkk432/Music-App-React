@@ -20,6 +20,10 @@ And play then with the MusicProX player.
 3. Faced many issues with google login and atlast resorted to use React Library for it.
 4. i didnt know in the start of project how to use database , that we have to deploy server and client seperately, that there is even a server side but now i have learnt about it. 
 
+**Shlok Sinha**-<br/>
+1. Learnt about different desgin choices and color schemes, and why these are important
+2. Used JavaScript without the help of any tutorials and found out how helpful it is.
+3. Learnt how to work in a team, the technical skills needed.
 
 ## How to use?
 1. Login using BITS mail id (as the app is only for students of BITS).
@@ -48,7 +52,8 @@ And play then with the MusicProX player.
 <br />
 
 **Shlok Sinha** -<br>
-1.made music player section,playlist ,liked using HTML,CSS.<br />
+1. Made music player section, Playlist, Liked, Nav-bar using HTML,CSS.<br />
+2. Added the functionality to arrow keys (only) in music players and hamburger menu in nav-bar using Js.<br />
 <br />
 
 **Naman Ajay Markhedkar** <br />
