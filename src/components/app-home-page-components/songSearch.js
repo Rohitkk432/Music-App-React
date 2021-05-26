@@ -38,7 +38,7 @@ function SongSearch(){
             </div>
             
             <div className="result-container">
-                <Scrollbars style={{ width:"70vw", height: "63vh", color:"white" }}>
+                <Scrollbars style={{ width:"70vw", height: "71vh", color:"white" }}>
                     {songs.map((song, idx) => (
                         <SearchResult {...song} key={idx} />
                     ))}
