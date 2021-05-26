@@ -3,8 +3,8 @@
 # Music Pro X - DevSoc Project.
 
 ## About
-MusicProX is a app where you can search songs . Add songs them to queue ,playlist and liked.
-And play then with the MusicProX player.
+MusicProX is a app where you can search songs . Add songs to queue ,playlist and liked.
+And play them with the MusicProX player.
 
 **SERVER REPO LINK** - https://github.com/Rohitkk432/musicprox-server.git
 
@@ -23,7 +23,7 @@ And play then with the MusicProX player.
 ## Disclaimer
 1. Currently the client side is hosted on netlify - https://musicprox.netlify.app/ <br/>
 2. Server side on Heroku http://music-pro-x-server.herokuapp.com/  (nothing to see here though) <br />
-3. There is a CORS issue which was tried to fix but couldnt so we only have the link to the video demonstration on local client and server.<br/>
+3. There are CORS ERRORS which was were tried to fix but couldn't so below we have the link to the video demonstration on local client and server.<br/>
 low quality video - https://drive.google.com/file/d/15PxifYNtUOKM8zn6wikt0jYGpLiKWZOr/view?usp=sharing <br />
 better quality video - https://drive.google.com/file/d/1yI2mKTMFCnxeqEE_upZwzQHl56j8JDgY/view?usp=sharing
 
