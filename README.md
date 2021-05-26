@@ -20,8 +20,9 @@ And play then with the MusicProX player.
 ## Disclaimer
 1. Currently the client side is hosted on netlify - https://musicprox.netlify.app/ <br/>
 2. Server side on Heroku http://music-pro-x-server.herokuapp.com/  (nothing to see here though) <br />
-3. There is a CORS issue which was tried to fix but couldnt so i only have the link to the video demonstration on local client and server.
-https://drive.google.com/file/d/15PxifYNtUOKM8zn6wikt0jYGpLiKWZOr/view?usp=sharing
+3. There is a CORS issue which was tried to fix but couldnt so i only have the link to the video demonstration on local client and server.<br/>
+low quality video - https://drive.google.com/file/d/15PxifYNtUOKM8zn6wikt0jYGpLiKWZOr/view?usp=sharing
+better quality video - https://drive.google.com/file/d/1yI2mKTMFCnxeqEE_upZwzQHl56j8JDgY/view?usp=sharing
 
 ## Browser Support
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
