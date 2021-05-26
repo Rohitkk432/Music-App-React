@@ -120,7 +120,7 @@ $ cd Music-Pro-X
 #### Songs addding functionality
 ![image](https://user-images.githubusercontent.com/74586376/119718940-cf226e00-be85-11eb-866c-db3afd63149c.png)
 
-### Qeueue and Music Player
+### Queue and Music Player
 ![image](https://user-images.githubusercontent.com/74586376/119719021-eb260f80-be85-11eb-936d-3fe5bf5891ca.png)
 
 ### Liked Songs Page
