@@ -25,6 +25,10 @@ And play then with the MusicProX player.
 2. Used JavaScript without the help of any tutorials and found out how helpful it is.
 3. Learnt how to work in a team, the technical skills needed.
 
+**Naman Ajay Markhedkar**-<br/>
+1. Used HTML , CSS to add to the layout/style of the website.
+2. Learnt to manage time to handle multiple tasks together.
+
 ## How to use?
 1. Login using BITS mail id (as the app is only for students of BITS).
 2. After logging in you will be redirected to the app home page where you can search songs by typing in search bar (currently we have only 18 songs).
@@ -57,6 +61,8 @@ And play then with the MusicProX player.
 <br />
 
 **Naman Ajay Markhedkar** <br />
+1. Worked on the Home page to create poster showing part.
+2. Worked over design.
 
 ### Social Media
 
