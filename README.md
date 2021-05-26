@@ -18,6 +18,7 @@ And play then with the MusicProX player.
 - [Current Implementations 👨‍💻](#current-implementations)
 - [Future Implementations 💻](#future-implementations)
 - [Individual Contribution ☕](#individual-contribution)
+- [SnapShots](#snapshots)
 
 ## Disclaimer
 1. Currently the client side is hosted on netlify - https://musicprox.netlify.app/ <br/>
@@ -107,6 +108,30 @@ $ cd Music-Pro-X
 **Naman Ajay Markhedkar** <br />
 1. Worked on the Home page to create poster showing part.
 2. Worked over design.
+
+## Snapshots
+
+### Login Page
+![image](https://user-images.githubusercontent.com/74586376/119718715-879be200-be85-11eb-92b6-763027702b85.png)
+
+### App Home Page 
+![image](https://user-images.githubusercontent.com/74586376/119718787-9bdfdf00-be85-11eb-9ebb-0583456ead9f.png)
+
+#### Songs addding functionality
+![image](https://user-images.githubusercontent.com/74586376/119718940-cf226e00-be85-11eb-866c-db3afd63149c.png)
+
+### Qeueue and Music Player
+![image](https://user-images.githubusercontent.com/74586376/119719021-eb260f80-be85-11eb-936d-3fe5bf5891ca.png)
+
+### Liked Songs Page
+![image](https://user-images.githubusercontent.com/74586376/119719092-fda04900-be85-11eb-9fbc-e191ad434836.png)
+
+### Playlist Page 
+![image](https://user-images.githubusercontent.com/74586376/119719142-0e50bf00-be86-11eb-9ab5-1b4ba3a596bd.png)
+
+#### Music PLayer
+![image](https://user-images.githubusercontent.com/74586376/119719266-33453200-be86-11eb-9310-ff449be0dea8.png)
+
 
 ### Social Media
 
