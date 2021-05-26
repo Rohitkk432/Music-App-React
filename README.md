@@ -3,7 +3,7 @@
 # Music Pro X - DevSoc Project.
 
 ## About
-MusicProX is a app where you can create, search songs . Add songs them to queue ,playlist and liked.
+MusicProX is a app where you can search songs . Add songs them to queue ,playlist and liked.
 And play then with the MusicProX player.
 
 ## Table of Contents
