@@ -1,3 +1,10 @@
+.musicprox-player {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .box-image {
     margin: auto;
     margin-top: 2.5rem;
@@ -6,17 +13,53 @@
     height: 12rem;
     background-color: white;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.box-image img {
+    height: 100%;
 }
 
 .controls {
     margin: auto;
     margin-top: 0;
     margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .icons {
+    padding: 10px;
     margin: 10px;
     font-size: 25px;
+    border-radius: 5px;
+    background-color: rgb(139, 139, 139);
+}
+.icons-active {
+    box-shadow: -2px -2px 0px black;
+}
+.icons:hover {
+    color: rgb(54, 54, 54);
+}
+.autoplay {
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0px black;
+    background-color: rgb(139, 139, 139);
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.autoplay-active {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(139, 139, 139);
+    display: inline-block;
+    font-size: 1.5rem;
+    box-shadow: -2px -2px 0px black;
 }
 
 @media screen and (max-width: 510px) {

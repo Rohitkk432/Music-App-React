@@ -2,6 +2,7 @@ import React from 'react';
 // import {Link} from 'react-router-dom';
 import Nav from './app-home-page-components/nav';
 import MusicUI from './app-home-page-components/musicUi';
+import './app-home-page.css'
 
 function AppHomePage(){
     return(

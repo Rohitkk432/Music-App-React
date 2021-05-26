@@ -10,6 +10,26 @@
     font-size: 34px;
     color: black;
     padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.clear-list-btn-queue {
+    font-size: 1.6rem;
+    width: 8rem;
+    height: 2.4rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px black;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clear-list-btn-queue:hover {
+    background-color: rgb(112, 112, 112);
+    color: whitesmoke;
 }
 .queue-list-box {
     background-color: rgba(255, 255, 255, 0.7);
@@ -75,6 +95,10 @@
     margin-left: 6px;
     margin-right: 6px;
 }
+.Q-icons-option:hover {
+    color: white;
+}
+
 @media screen and (max-width: 510px) {
     .Q-result-info {
         width: 11rem;

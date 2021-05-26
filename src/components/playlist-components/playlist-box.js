@@ -1,12 +1,12 @@
 import { useState, React } from 'react';
 import './playlist.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
-import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue} from '../../methods';
+import { faPlus, faHeart,faMinus } from '@fortawesome/free-solid-svg-icons';
+import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue,delSongInPlaylist} from '../../methods';
 import {currentId} from '../login_page_components/googlelogin';
 
 function PlaylistBox(props){
-    const {song_id,title,singer,imgpath,duration} =props;
+    const {song_id,title,singer,imgpath,duration,playlist_number} =props;
     const [modalOpen,setModal]=useState(false);
 
 
@@ -54,6 +54,10 @@ function PlaylistBox(props){
                 e.preventDefault();
                 checkAddSongInLiked(currentId,song_id);
                 }} icon={faHeart} aria-hidden="true" />
+                <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
+                e.preventDefault();
+                delSongInPlaylist(currentId,song_id,playlist_number);
+                }} icon={faMinus} aria-hidden="true" />
             </div>
         </div>
     )

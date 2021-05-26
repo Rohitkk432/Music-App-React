@@ -1,9 +1,9 @@
 // import React from 'react';
-
+const link = 'http://localhost:5000'
 //User methods
 //checking if user exists
 const checkExistingUser = async function(email){
-    const response = await fetch(`http://localhost:5000/users/${email}`,{ method: "GET"})
+    const response = await fetch(`${link}/users/${email}`,{ method: "GET"})
         .then((res)=>res.json())
         .then((user)=>{
             return user;
@@ -14,7 +14,7 @@ const checkExistingUser = async function(email){
 
 //register new user
 const registerNewUser = async function(email){
-    const newReg = await fetch('http://localhost:5000/users',{
+    const newReg = await fetch(`${link}/users`,{
             method:"POST",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"email":`${email}`})
@@ -57,12 +57,27 @@ async function checkAddSongInPlaylist(user_id,song_id,playlist_number){
     })
 }
 
+async function delQueueAddPlaylist(user_id,playlist_number){
+    delQueue(user_id)
+    .then(()=>{
+        fetch(`${link}/playlistQueue`,{
+            method:"POST",
+            headers:{"Content-Type": "application/json"},
+            body: JSON.stringify({"user_id":`${user_id}`,"playlist_number":`${playlist_number}`})
+        })
+        .then((res)=>res.json())
+        .then((song)=>{
+            return song;
+        })
+        .catch((err)=>console.log(err));
+    })
+}
 //=================================================================================================//
 
 //Songs method (will hardly use as there already exits json file)
 //getting all songs
 const getAllSongs = async function(){
-    const response = await fetch(`http://localhost:5000/songs`)
+    const response = await fetch(`${link}/songs`)
         .then((res)=>res.json())
         .then((songsList)=>{
             return songsList;
@@ -76,11 +91,9 @@ const getAllSongs = async function(){
 //Queue Methods
 //getting full queue of a user
 const getFullQueue = async function(user_id){
-    console.log("bye");
-    const response = await fetch(`http://localhost:5000/queue/${user_id}`)
+    const response = await fetch(`${link}/queue/${user_id}`)
         .then((res)=> res.json())
         .then((queueList)=>{
-            console.log("rohit");
             return queueList;
         })
         .catch((err)=>console.log(err));
@@ -89,7 +102,7 @@ const getFullQueue = async function(user_id){
 
 //findings if a particular song exists in users queue
 const checkSongInQueue = async function(user_id,song_id){
-    const response = await fetch(`http://localhost:5000/queue/${user_id}/${song_id}`,{
+    const response = await fetch(`${link}/queue/${user_id}/${song_id}`,{
             method:"GET",
         })
         .then((res)=>res.json())
@@ -102,7 +115,7 @@ const checkSongInQueue = async function(user_id,song_id){
 
 //adding a song to queue
 const addSongInQueue = async function(user_id,song_id){
-    const response = await fetch('http://localhost:5000/queue',{
+    const response = await fetch(`${link}/queue`,{
             method:"POST",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}`})
@@ -117,7 +130,7 @@ const addSongInQueue = async function(user_id,song_id){
 
 //deleting single specific song from queue
 const delSongInQueue = async function(user_id,song_id){
-    const response = await fetch('http://localhost:5000/queue',{
+    const response = await fetch(`${link}/queue`,{
             method:"DELETE",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}`})
@@ -132,7 +145,7 @@ const delSongInQueue = async function(user_id,song_id){
 
 //deleting entire queue
 const delQueue = async function(user_id){
-    const response = await fetch(`http://localhost:5000/queue/${user_id}`,{
+    const response = await fetch(`${link}/queue/${user_id}`,{
             method:"DELETE",
         })
         .then((res)=>res.json())
@@ -148,7 +161,7 @@ const delQueue = async function(user_id){
 //liked methods
 //getting full liked list of a user
 const getFullLiked = async function(user_id){
-    const response = await fetch(`http://localhost:5000/liked/${user_id}`)
+    const response = await fetch(`${link}/liked/${user_id}`)
         .then((res)=>res.json())
         .then((likedList)=>{
             return likedList;
@@ -159,7 +172,7 @@ const getFullLiked = async function(user_id){
 
 //findings if a particular song exists in users liked
 const checkSongInLiked = async function(user_id,song_id){
-    const response = await fetch(`http://localhost:5000/liked/${user_id}/${song_id}`,{
+    const response = await fetch(`${link}/liked/${user_id}/${song_id}`,{
             method:"GET",
         })
         .then((res)=>res.json())
@@ -172,7 +185,7 @@ const checkSongInLiked = async function(user_id,song_id){
 
 //adding a song to liked
 const addSongInLiked = async function(user_id,song_id){
-    const response = await fetch('http://localhost:5000/liked',{
+    const response = await fetch(`${link}/liked`,{
             method:"POST",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}`})
@@ -187,7 +200,7 @@ const addSongInLiked = async function(user_id,song_id){
 
 //deleting single specific song from liked
 const delSongInLiked = async function(user_id,song_id){
-    const response = await fetch('http://localhost:5000/liked',{
+    const response = await fetch(`${link}/liked`,{
             method:"DELETE",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}`})
@@ -202,7 +215,7 @@ const delSongInLiked = async function(user_id,song_id){
 
 //deleting entire liked
 const delLiked = async function(user_id){
-    const response = await fetch(`http://localhost:5000/liked/${user_id}`,{
+    const response = await fetch(`${link}/liked/${user_id}`,{
             method:"DELETE",
         })
         .then((res)=>res.json())
@@ -218,7 +231,7 @@ const delLiked = async function(user_id){
 // playlist methods
 //getting full specific playlist of a user
 const getFullPlaylist = async function(user_id,playlist_number){
-    const response = await fetch(`http://localhost:5000/playlist/${user_id}/${playlist_number}`,{
+    const response = await fetch(`${link}/playlist/${user_id}/${playlist_number}`,{
             method:"GET",
         })
         .then((res)=>res.json())
@@ -231,7 +244,7 @@ const getFullPlaylist = async function(user_id,playlist_number){
 
 //checking specific song in a specific playlist of a user
 const checkSongInPlaylist = async function(user_id,song_id,playlist_number){
-    const response = await fetch(`http://localhost:5000/playlist/${user_id}/${song_id}/${playlist_number}`,{
+    const response = await fetch(`${link}/playlist/${user_id}/${song_id}/${playlist_number}`,{
             method:"GET",
         })
         .then((res)=>res.json())
@@ -244,7 +257,7 @@ const checkSongInPlaylist = async function(user_id,song_id,playlist_number){
 
 //posting a song to a specific playlist of a user
 const addSongInPlaylist = async function(user_id,song_id,playlist_number){
-    const response = await fetch('http://localhost:5000/playlist',{
+    const response = await fetch(`${link}/playlist`,{
             method:"POST",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}` , "playlist_number":`${playlist_number}`})
@@ -259,7 +272,7 @@ const addSongInPlaylist = async function(user_id,song_id,playlist_number){
 
 //deleting single specific song from a specific playlist
 const delSongInPlaylist = async function(user_id,song_id,playlist_number){
-    const response = await fetch('http://localhost:5000/playlist',{
+    const response = await fetch(`${link}/playlist`,{
             method:"DELETE",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"song_id":`${song_id}` , "playlist_number":`${playlist_number}`})
@@ -274,7 +287,7 @@ const delSongInPlaylist = async function(user_id,song_id,playlist_number){
 
 //deleting entire specific playlist
 const delPlaylist = async function(user_id,playlist_number){
-    const response = await fetch('http://localhost:5000/playlist/full',{
+    const response = await fetch(`${link}/playlist/full`,{
             method:"DELETE",
             headers:{"Content-Type": "application/json"},
             body: JSON.stringify({"user_id":`${user_id}`,"playlist_number":`${playlist_number}`})
@@ -289,4 +302,4 @@ const delPlaylist = async function(user_id,playlist_number){
 
 //=================================================================================================//
 
-export {checkExistingUser , registerNewUser , getAllSongs , getFullQueue , checkSongInQueue , addSongInQueue , delSongInQueue , delQueue , getFullLiked , checkSongInLiked , addSongInLiked , delSongInLiked , delLiked , getFullPlaylist , checkSongInPlaylist , addSongInPlaylist , delSongInPlaylist , delPlaylist , checkAddSongInLiked , checkAddSongInQueue , checkAddSongInPlaylist };
+export {checkExistingUser , registerNewUser , getAllSongs , getFullQueue , checkSongInQueue , addSongInQueue , delSongInQueue , delQueue , getFullLiked , checkSongInLiked , addSongInLiked , delSongInLiked , delLiked , getFullPlaylist , checkSongInPlaylist , addSongInPlaylist ,delQueueAddPlaylist, delSongInPlaylist , delPlaylist , checkAddSongInLiked , checkAddSongInQueue , checkAddSongInPlaylist };

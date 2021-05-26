@@ -6,13 +6,13 @@ function PlaylistOptions(){
     return(
         <>
             <div className="playlist-option-half">
-                <Link to='/playlist/1'>
+                <Link to='/playlist/1' style={{ textDecoration: 'none' }}>
                     <div className="playlist-options">Playlist 1</div>
                 </Link>
-                <Link to='/playlist/2'>
+                <Link to='/playlist/2' style={{ textDecoration: 'none' }}>
                     <div className="playlist-options">Playlist 2</div>
                 </Link>
-                <Link to='/playlist/3'>
+                <Link to='/playlist/3' style={{ textDecoration: 'none' }}>
                     <div className="playlist-options">Playlist 3</div>
                 </Link>
             </div>

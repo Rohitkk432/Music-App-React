@@ -1,8 +1,8 @@
 import { useState, React } from 'react';
 import './liked-page.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
-import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue} from '../methods';
+import { faPlus, faHeart, faMinus } from '@fortawesome/free-solid-svg-icons';
+import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue, delSongInLiked} from '../methods';
 import {currentId} from './login_page_components/googlelogin';
 
 function LikedBox(props){
@@ -54,6 +54,10 @@ function LikedBox(props){
                 e.preventDefault();
                 checkAddSongInLiked(currentId,song_id);
                 }} icon={faHeart} aria-hidden="true" />
+                <FontAwesomeIcon className="L-icons-option" onClick={(e)=>{
+                e.preventDefault();
+                delSongInLiked(currentId,song_id);
+                }} icon={faMinus} aria-hidden="true" />
             </div>
         </div>
     )

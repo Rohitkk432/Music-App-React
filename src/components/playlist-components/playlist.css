@@ -11,6 +11,26 @@
     margin-bottom: 2rem;
     font-size: 2.5rem;
     font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.clear-list-btn-playlist {
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    width: 8rem;
+    height: 2.4rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px black;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.clear-list-btn-playlist:hover {
+    background-color: rgb(112, 112, 112);
+    color: whitesmoke;
 }
 .playlist-list-box {
     background-color: rgba(255, 255, 255, 0.7);
@@ -82,6 +102,9 @@
 .P-icons-option {
     margin-left: 7px;
     margin-right: 7px;
+}
+.P-icons-option:hover {
+    color: white;
 }
 
 @media screen and (max-width: 620px) {

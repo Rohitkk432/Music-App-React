@@ -26,12 +26,6 @@
 .bits-disclaimer {
     margin: 18px;
 }
-.logoutbutton {
-    height: 2.7rem;
-    width: 7rem;
-    margin: 1.8rem;
-    font-size: 1rem;
-}
 @media screen and (max-width: 1150px) {
     .login-side {
         height: 25vh;
@@ -40,8 +34,7 @@
         border-bottom-left-radius: 0;
         border-top-right-radius: 40px;
     }
-    .app-name,
-    .makers-org {
+    .apptext {
         display: none;
     }
     .logintext {
@@ -50,12 +43,29 @@
         justify-content: center;
         align-items: center;
     }
+    .bits-disclaimer {
+        font-size: 1.4rem;
+    }
 }
 @media screen and (max-width: 450px) {
+    .login-side {
+        padding-top: 10px;
+        justify-content: flex-start;
+    }
     .logintext {
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .bitsdisclaimer {
+        display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
+    .bits-disclaimer {
+        font-size: 1rem;
+        margin: 10px;
     }
 }

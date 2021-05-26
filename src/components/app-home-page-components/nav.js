@@ -17,13 +17,13 @@ function Nav (){
                 className="nav">
                     <div className="logo-div"><img className="logo-img" src={logo} alt="logo" /></div>
                     <div className={isHidden ? "hidden1 nav-tabs" : "nav-tabs"}>
-                        <Link to='/home'>
+                        <Link to='/home' style={{ textDecoration: 'none' }}>
                             <div className="nav-elements home-nav">Home</div>
                         </Link>
-                        <Link to='/playlist/1'>
+                        <Link to='/playlist/1' style={{ textDecoration: 'none' }}>
                             <div className="nav-elements">Playlist</div>
                         </Link>
-                        <Link to='/liked'>
+                        <Link to='/liked' style={{ textDecoration: 'none' }}>
                             <div className="nav-elements">Liked</div>
                         </Link>
                         <SignoutButtton />

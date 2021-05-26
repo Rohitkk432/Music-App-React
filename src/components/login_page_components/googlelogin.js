@@ -2,7 +2,6 @@ import React from 'react';
 import './googlelogin.css';
 import { GoogleLogin } from 'react-google-login';
 import {useHistory} from 'react-router-dom';
-import {checkExistingUser,registerNewUser} from '../../methods';
 
 var currentUser;
 var currentId;
@@ -11,23 +10,31 @@ function Login () {
         const onSuccess = (res)=>{
             currentUser = res.profileObj.email;
             checkOfUser();
-            console.log(currentUser);
+            // console.log(currentUser);
             history.push('/home');
         }
         const onFailure =(res)=>{
             console.log(res);
         }
         
-        function checkOfUser(){
-            checkExistingUser(currentUser)
+        // 
+        async function checkOfUser(){
+            await fetch(`http://localhost:5000/users/${currentUser}`,{ method: "GET"})
+            .then((resp)=>resp.json())
             .then((res)=>{
                 if(res){
                     currentId=res.id;
                 }else{
-                    registerNewUser(currentUser)
-                    .then((resp)=>{
-                        currentId=resp.id;
+                    fetch('http://localhost:5000/users',{
+                        method:"POST",
+                        headers:{"Content-Type": "application/json"},
+                        body: JSON.stringify({"email":`${currentUser}`})
                     })
+                    .then((res)=>res.json())
+                    .then((user)=>{
+                        currentId=user.id
+                    })
+                    .catch((err)=>console.log(err));
                 }
             })
         }

@@ -2,14 +2,14 @@ import {Component, React} from 'react';
 import './playlist.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 import PlaylistBox from './playlist-box';
-// import {getFullPlaylist} from '../../methods';
+import {delPlaylist,delQueueAddPlaylist} from '../../methods';
 import {currentId} from '../login_page_components/googlelogin';
 
 class Playlist2 extends Component{
 
     constructor(){
         super();
-        this.state = { fullPlaylist2: [] };
+        this.state = { fullPlaylist2: []};
         
     }
     async componentDidMount() {
@@ -19,7 +19,7 @@ class Playlist2 extends Component{
         })
         .then((res)=>res.json())
         .then((playlist)=>{
-            console.log("playlist2");
+            // console.log("playlist2");
             this.setState({fullPlaylist2:playlist})
         })
         .catch((err)=>console.log(err));
@@ -29,7 +29,17 @@ class Playlist2 extends Component{
         return(
             <>
                 <div className="playlist-list">
-                    <div className="playlist-title">Playlist 2</div>
+                    <div className="playlist-title">
+                        <div>Playlist 2</div>
+                        <button className="clear-list-btn-playlist" onClick={(e)=>{
+                            e.preventDefault();
+                            delPlaylist(currentId,2);
+                        }}>Clear All</button>
+                        <button className="clear-list-btn-playlist" onClick={(e)=>{
+                            e.preventDefault();
+                            delQueueAddPlaylist(currentId,2);
+                        }}>Play</button>
+                    </div>
                     <Scrollbars style={{width:"80%", height: "57vh"}}>
                         {this.state.fullPlaylist2.map((song, idx) => (
                             <PlaylistBox {...song} key={idx} />
