@@ -22,11 +22,10 @@ And play them with the MusicProX player.
 
 ## Disclaimer
 1. Currently the client side is hosted on netlify - https://musicprox.netlify.app/ <br/>
-2. Server side on Heroku http://music-pro-x-server.herokuapp.com/  (nothing to see here though) <br />
-3. There are CORS ERRORS which was were tried to fix but couldn't so below we have the link to the video demonstration on local client and server.<br/>
+
+2. Working video on local machine- <br />
 low quality video - https://drive.google.com/file/d/15PxifYNtUOKM8zn6wikt0jYGpLiKWZOr/view?usp=sharing <br />
 better quality video - https://drive.google.com/file/d/1yI2mKTMFCnxeqEE_upZwzQHl56j8JDgY/view?usp=sharing
-4. Currently everything this repo is reverted back so it works on local machine so i will not run online as database is on local machine.
 
 #### Database Schema
 ![image](https://user-images.githubusercontent.com/74586376/119724049-d482b700-be8b-11eb-8be0-d48eeca40c63.png)
