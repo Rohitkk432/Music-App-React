@@ -1,5 +1,5 @@
 // import React from 'react';
-const link = 'http://localhost:5000'
+const link = 'https://music-pro-x-server.herokuapp.com'
 
 // const link = 'https://safe-eyrie-59676.herokuapp.com/https://music-pro-x-server.herokuapp.com';
 //User methods

@@ -14,7 +14,7 @@ class Playlist2 extends Component{
     }
     async componentDidMount() {
 
-        await fetch(`http://localhost:5000/playlist/${currentId}/2`,{
+        await fetch(`https://music-pro-x-server.herokuapp.com/playlist/${currentId}/2`,{
             method:"GET",
         })
         .then((res)=>res.json())
