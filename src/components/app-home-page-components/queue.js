@@ -21,7 +21,6 @@ function Queue (params) {
     }
 
     useEffect(()=>{
-        console.log("queue.js");
         getFullQueue(currentId).then((list)=>{setFullQueue(list)});
     },[currentId,updater,setFullQueue]);
 
@@ -33,6 +32,7 @@ function Queue (params) {
                     <button className="clear-list-btn-queue" onClick={(e)=>{
                         e.preventDefault();
                         delQueue(currentId);
+                        setFullQueue([]);
                         setUpd2(upd2+1);
                     }}>Clear All</button>
                 </div>
