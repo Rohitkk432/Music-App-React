@@ -3,12 +3,16 @@ import './playlist.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faHeart,faMinus } from '@fortawesome/free-solid-svg-icons';
 import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue,delSongInPlaylist} from '../../methods';
-import {currentId} from '../login_page_components/googlelogin';
 
 function PlaylistBox(props){
     const {song_id,title,singer,imgpath,duration,playlist_number} =props;
     const [modalOpen,setModal]=useState(false);
 
+    const [pupdate, setPupdate] = props.updater;
+
+    const playlistno = props.playlistno
+
+    const currentId = localStorage.getItem('id');
 
     function AddModal (){
         return(
@@ -16,18 +20,22 @@ function PlaylistBox(props){
                 <button className="P-modal-options" onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInQueue(currentId,song_id)
+                    setModal(!modalOpen)
                 }}>Queue</button>
-                <button className="P-modal-options" onClick={(e)=>{
+                <button className={(playlistno!==1)?"P-modal-options":"hidep"} onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,song_id,1);
+                    setModal(!modalOpen)
                 }}>Playlist1</button>
-                <button className="P-modal-options" onClick={(e)=>{
+                <button className={(playlistno!==2)?"P-modal-options":"hidep"} onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,song_id,2);
+                    setModal(!modalOpen)
                 }}>Playlist2</button>
-                <button className="P-modal-options" onClick={(e)=>{
+                <button className={(playlistno!==3)?"P-modal-options":"hidep"} onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,song_id,3);
+                    setModal(!modalOpen)
                 }}>Playlist3</button>
             </div>
         )
@@ -57,6 +65,7 @@ function PlaylistBox(props){
                 <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
                 e.preventDefault();
                 delSongInPlaylist(currentId,song_id,playlist_number);
+                setPupdate(pupdate+1);
                 }} icon={faMinus} aria-hidden="true" />
             </div>
         </div>

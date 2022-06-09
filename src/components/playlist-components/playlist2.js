@@ -1,54 +1,43 @@
-import {Component, React} from 'react';
+import {React, useEffect, useState} from 'react';
 import './playlist.css';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 import PlaylistBox from './playlist-box';
-import {delPlaylist,delQueueAddPlaylist} from '../../methods';
-import {currentId} from '../login_page_components/googlelogin';
+import {delPlaylist,delQueueAddPlaylist,getFullPlaylist} from '../../methods';
 
-class Playlist2 extends Component{
+function Playlist2 (){
 
-    constructor(){
-        super();
-        this.state = { fullPlaylist2: []};
-        
-    }
-    async componentDidMount() {
+    const currentId = localStorage.getItem('id');
 
-        await fetch(`https://music-pro-x-server.herokuapp.com/playlist/${currentId}/2`,{
-            method:"GET",
-        })
-        .then((res)=>res.json())
-        .then((playlist)=>{
-            // console.log("playlist2");
-            this.setState({fullPlaylist2:playlist})
-        })
-        .catch((err)=>console.log(err));
-    
-    }
-    render(){
-        return(
-            <>
-                <div className="playlist-list">
-                    <div className="playlist-title">
-                        <div>Playlist 2</div>
-                        <button className="clear-list-btn-playlist" onClick={(e)=>{
-                            e.preventDefault();
-                            delPlaylist(currentId,2);
-                        }}>Clear All</button>
-                        <button className="clear-list-btn-playlist" onClick={(e)=>{
-                            e.preventDefault();
-                            delQueueAddPlaylist(currentId,2);
-                        }}>Play</button>
-                    </div>
-                    <Scrollbars style={{width:"80%", height: "57vh"}}>
-                        {this.state.fullPlaylist2.map((song, idx) => (
-                            <PlaylistBox {...song} key={idx} />
-                        ))}
-                    </Scrollbars> 
+    const [fullPlaylist2, setFullPlaylist2] = useState([]);
+    const [pupdate, setPupdate] = useState(0);
+
+    useEffect(()=>{
+        getFullPlaylist(currentId,2).then((playlist)=>setFullPlaylist2(playlist))
+    },[currentId,pupdate]);
+
+    return(
+        <>
+            <div className="playlist-list">
+                <div className="playlist-title">
+                    <div>Playlist 2</div>
+                    <button className="clear-list-btn-playlist" onClick={(e)=>{
+                        e.preventDefault();
+                        delPlaylist(currentId,2);
+                        setFullPlaylist2([]);
+                    }}>Clear All</button>
+                    <button className="clear-list-btn-playlist" onClick={(e)=>{
+                        e.preventDefault();
+                        delQueueAddPlaylist(currentId,2);
+                    }}>Play</button>
                 </div>
-            </>
-        )
-    }
+                <Scrollbars style={{width:"80%", height: "57vh"}} >
+                    {fullPlaylist2.map((song, idx) => (
+                        <PlaylistBox playlistno={1} updater={[pupdate,setPupdate]} {...song} key={idx} />
+                    ))}
+                </Scrollbars> 
+            </div>
+        </>
+    )    
 }
 
 export default Playlist2 ;

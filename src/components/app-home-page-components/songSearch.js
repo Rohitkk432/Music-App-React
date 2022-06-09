@@ -1,13 +1,16 @@
 import {React,useState,useMemo} from 'react';
 import './songSearch.css';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 import songsList from "../../songinfo.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch} from '@fortawesome/free-solid-svg-icons';
 import SearchResult from './search-result';
 
 
-function SongSearch(){
+function SongSearch(params){
+
+    const [fullQueue, setFullQueue] = params.data;
+    const [upd2, setUpd2] = params.upd;
 
     const [search, setSearch] = useState("");
 
@@ -40,7 +43,7 @@ function SongSearch(){
             <div className="result-container">
                 <Scrollbars style={{ width:"70vw", height: "71vh", color:"white" }}>
                     {songs.map((song, idx) => (
-                        <SearchResult {...song} key={idx} />
+                        <SearchResult upd={[upd2,setUpd2]} data={[fullQueue, setFullQueue]} {...song} key={idx} />
                     ))}
                 </Scrollbars>
             </div>

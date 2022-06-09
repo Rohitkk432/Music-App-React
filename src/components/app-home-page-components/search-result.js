@@ -2,32 +2,48 @@ import {React,useState} from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
 import './songSearch.css';
-import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue} from '../../methods';
-import {currentId} from '../login_page_components/googlelogin';
+import {checkAddSongInLiked,checkAddSongInPlaylist,checkAddSongInQueue,getFullQueue} from '../../methods';
 
 const SearchResult = function(props){
     const {id,title,singer,imgpath,duration} =props;
     const [modalOpen,setModal]=useState(false);
-    
+
+    const [fullQueue, setFullQueue] = props.data;
+    const [upd2, setUpd2] = props.upd;
+
+    const currentId = localStorage.getItem('id');
+
+    //to remove warnings
+    if(fullQueue === 0){
+        setFullQueue(fullQueue);
+    }
 
     function AddModal (){
         return(
             <div className={modalOpen?"add-modal":"hidden2"}>
                 <button className="modal-options" onClick={(e)=>{
                     e.preventDefault();
-                    checkAddSongInQueue(currentId,id)
+                    checkAddSongInQueue(currentId,id);
+                    getFullQueue(currentId).then((list)=>{
+                        setFullQueue(list);
+                        setUpd2(upd2+1);
+                    });
+                    setModal(!modalOpen);
                 }}>Queue</button>
                 <button className="modal-options" onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,id,1);
+                    setModal(!modalOpen);
                 }}>Playlist1</button>
                 <button className="modal-options" onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,id,2);
+                    setModal(!modalOpen);
                 }}>Playlist2</button>
                 <button className="modal-options" onClick={(e)=>{
                     e.preventDefault();
                     checkAddSongInPlaylist(currentId,id,3);
+                    setModal(!modalOpen);
                 }}>Playlist3</button>
             </div>
         )

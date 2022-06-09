@@ -1,7 +1,6 @@
 // import React from 'react';
 const link = 'https://music-pro-x-server.herokuapp.com'
 
-// const link = 'https://safe-eyrie-59676.herokuapp.com/https://music-pro-x-server.herokuapp.com';
 //User methods
 //checking if user exists
 const checkExistingUser = async function(email){
@@ -38,7 +37,7 @@ async function checkAddSongInQueue(user_id,song_id){
         if(!res){
             addSongInQueue(user_id,song_id);
         }
-    })
+    }).catch((err)=>console.log(err.message));
 }
 
 async function checkAddSongInLiked(user_id,song_id){
@@ -111,7 +110,11 @@ const checkSongInQueue = async function(user_id,song_id){
         .then((song)=>{
             return song;
         })
-        .catch((err)=>console.log(err));
+        .catch((err)=>{
+            if(err.message !== "Unexpected end of JSON input"){
+                console.log(err.message)
+            }
+        });
     return response;
 }
 
@@ -181,7 +184,11 @@ const checkSongInLiked = async function(user_id,song_id){
         .then((song)=>{
             return song;
         })
-        .catch((err)=>console.log(err));
+        .catch((err)=>{
+            if(err.message !== "Unexpected end of JSON input"){
+                console.log(err.message)
+            }
+        });
     return response;
 }
 
@@ -253,7 +260,11 @@ const checkSongInPlaylist = async function(user_id,song_id,playlist_number){
         .then((song)=>{
             return song;
         })
-        .catch((err)=>console.log(err));
+        .catch((err)=>{
+            if(err.message !== "Unexpected end of JSON input"){
+                console.log(err.message)
+            }
+        });
     return response;
 }
 

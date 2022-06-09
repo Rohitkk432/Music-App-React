@@ -1,4 +1,4 @@
-import {Component, React} from 'react';
+import {React,useEffect,useState} from 'react';
 import './musicUi.css';
 import Player from './player';
 import Queue from './queue';
@@ -6,58 +6,56 @@ import FooterPlayer from './footerplayer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import SongSearch from './songSearch';
-import {currentId} from '../login_page_components/googlelogin';
+import {getFullQueue} from '../../methods';
 
 
-class MusicUI extends Component{
-    constructor(){
-        super();
-        this.state = { isUp:false , fullQueue: [] };
-    }
-    async componentDidMount() {
+function MusicUI (){
 
-        await fetch(`https://music-pro-x-server.herokuapp.com/queue/${currentId}`)
-        .then((res)=> res.json())
-        .then((queueList)=>{
-            // console.log("queue);
-            this.setState({fullQueue:queueList})
-        })
-        .catch((err)=>console.log(err));
+    const currentId = localStorage.getItem('id');
 
-    }
-    render(){
-        return(
-            <>  
-                <div className={this.state.isUp ? "hidden" : ""}>
-                    <SongSearch />
-                </div>
-                <div className="musicUi">
-                    <div className={this.state.isUp ? "" : "hidden"}>
-                        <div className="music-player">
-                            <div className="music-controls">
-                                <div onClick={() => this.setState({isUp:(!this.state.isUp)})} className="arrow-down">
-                                    <FontAwesomeIcon className="arrows" icon={faAngleDown} aria-hidden="true" />
-                                </div>
-                                <Player data={{fullQueue:this.state.fullQueue}} />
+    const [isUp, setIsUp] = useState(false);
+    const [fullQueue, setFullQueue] = useState([]);
+    const [updater, setUpdater] = useState(0);
+    const [upd2 , setUpd2] = useState(0);
+
+    useEffect(()=>{
+        getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+    },[currentId]);
+
+    useEffect(()=>{
+        setUpdater(u=>u+1)
+    },[upd2]);
+
+    return(
+        <>  
+            <div className={isUp ? "hidden" : ""}>
+                <SongSearch upd={[upd2,setUpd2]}  data={[fullQueue, setFullQueue]} />
+            </div>
+            <div className="musicUi">
+                <div className={isUp ? "" : "hidden"}>
+                    <div className="music-player">
+                        <div className="music-controls">
+                            <div onClick={() => setIsUp(!isUp)} className="arrow-down">
+                                <FontAwesomeIcon className="arrows" icon={faAngleDown} aria-hidden="true" />
                             </div>
-                            <Queue data={{fullQueue:this.state.fullQueue}} />
+                            <Player updateO={[updater, setUpdater]}  data={[fullQueue, setFullQueue]} />
                         </div>
+                        <Queue upd={[upd2,setUpd2]} updateO={[updater, setUpdater]} data={[fullQueue, setFullQueue]} />
                     </div>
-
-                    <div className={this.state.isUp ? "hidden" : ""}>
-                        <div className="foot-music-controls">
-                            <div onClick={() => this.setState({isUp:(!this.state.isUp)})} className="arrow-up">
-                                <FontAwesomeIcon className="arrows" icon={faAngleUp} aria-hidden="true" />
-                            </div>
-                            <div className="footer-player">
-                                <FooterPlayer />
-                            </div>
+                </div>
+                <div className={isUp ? "hidden" : ""}>
+                    <div className="foot-music-controls">
+                        <div onClick={() => setIsUp(!isUp)} className="arrow-up">
+                            <FontAwesomeIcon className="arrows" icon={faAngleUp} aria-hidden="true" />
+                        </div>
+                        <div className="footer-player">
+                            <FooterPlayer />
                         </div>
                     </div>
                 </div>
-            </>
-        )
-    }
+            </div>
+        </>
+    )
 }
 
 export default MusicUI;

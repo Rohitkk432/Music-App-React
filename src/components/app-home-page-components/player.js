@@ -1,76 +1,90 @@
-import React, { Component } from 'react';
+import { React,useState,useEffect } from 'react';
 import './player.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRandom, faUndo, faStepBackward, faStepForward} from '@fortawesome/free-solid-svg-icons';
 import ReactAudioPlayer from 'react-audio-player';
+import {getFullQueue} from '../../methods';
 
 
-class Player extends Component{
-    constructor(){
-        super();
-        this.state = {songIndex:0 , loop:false, autoplay:false};
+function Player (params){
+
+    const [songIndex, setSongIndex] = useState(0);
+    const [loop, setLoop] = useState(false);
+    const [autoplay, setAutoplay] = useState(false);
+    const [fullQueue, setFullQueue] = params.data;
+
+    const [updater,setUpdater] = params.updateO;
+
+    let queueLength = fullQueue.length;
+
+    const currentId = localStorage.getItem('id');
+
+    useEffect(()=>{
+        console.log("player.js");
+        getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+    },[currentId,updater,setFullQueue]);
+
+    
+    //to remove warnings
+    if(fullQueue === 0){
+        setFullQueue(fullQueue);
+        if(false){
+            setUpdater(updater)
+        }
     }
-    render(){
-        let queueLength=(this.props.data.fullQueue).length;
-        return(
-            <div className="musicprox-player">
-                <div className="box-image">
-                    <img src={this.props.data.fullQueue?.[this.state.songIndex]?.imgpath} alt="" />
-                </div>
-                <ReactAudioPlayer
-                    src={this.props.data.fullQueue?.[this.state.songIndex]?.audiopath}
-                    autoPlay={this.state.autoplay}
-                    controls={true}
-                    loop={this.state.loop}
-                    controlsList="nodownload"
-                    style={{width:"90%",height:"3rem"}}
-                    onEnded={()=>{
-                        if(this.state.songIndex!==queueLength-1){
-                            this.setState({songIndex:(this.state.songIndex+1)})
-                        }else if(this.state.songIndex===queueLength-1){
-                            this.setState({songIndex:0})
-                        }
-                    }}
-                />
-                <div className="controls">
 
-                    {/* AutoPlay */}
-                    <div className={this.state.autoplay ? "icons autoplay-active":"icons autoplay"} onClick={()=>{
-                    this.setState({autoplay:(!this.state.autoplay)})
-                    }} >AutoPlay</div>
-
-                    {/* Random song of queue */}
-                    <FontAwesomeIcon className="icons" onClick={()=>{
-                        this.setState({songIndex:Math.trunc(Math.random()*queueLength)});
-                    }} icon={faRandom} aria-hidden="true" />
-
-                    {/* loop over same song */}
-                    <FontAwesomeIcon className={this.state.loop ? "icons icons-active":"icons"} onClick={()=>{
-                    this.setState({loop:(!this.state.loop)})
-                    }} icon={faUndo} aria-hidden="true" />
-
-                    {/* last song */}
-                    <FontAwesomeIcon className="icons" onClick={()=>{
-                    if(this.state.songIndex!==0){
-                        this.setState({songIndex:(this.state.songIndex-1)})
-                    }else if(this.state.songIndex===0){
-                        this.setState({songIndex:queueLength-1})
-                    }
-                    }} icon={faStepBackward} aria-hidden="true" />
-
-                    {/* next song */}
-                    <FontAwesomeIcon className="icons" onClick={()=>{
-                    if(this.state.songIndex!==queueLength-1){
-                        this.setState({songIndex:(this.state.songIndex+1)})
-                    }else if(this.state.songIndex===queueLength-1){
-                        this.setState({songIndex:0})
-                    }
-                    }} icon={faStepForward} aria-hidden="true" />
-                </div>
-
+    return(
+        <div className="musicprox-player">
+            <div className="box-image">
+                <img src={fullQueue?.[songIndex]?.imgpath} alt="" />
             </div>
-        )
-    }
+            <ReactAudioPlayer
+                src={fullQueue?.[songIndex]?.audiopath}
+                autoPlay={autoplay}
+                controls={true}
+                loop={loop}
+                controlsList="nodownload"
+                style={{width:"90%",height:"3rem"}}
+                onEnded={()=>{
+                    if(songIndex!==queueLength-1){
+                        setSongIndex(songIndex+1)
+                    }else if(songIndex===queueLength-1){
+                        setSongIndex(0)
+                    }
+                }}
+            />
+            <div className="controls">
+                {/* AutoPlay */}
+                <div className={autoplay ? "icons autoplay-active":"icons autoplay"} onClick={()=>{
+                    setAutoplay(!autoplay)
+                }} >AutoPlay</div>
+                {/* Random song of queue */}
+                <FontAwesomeIcon className="icons" onClick={()=>{
+                    setSongIndex(Math.trunc(Math.random()*queueLength))
+                }} icon={faRandom} aria-hidden="true" />
+                {/* loop over same song */}
+                <FontAwesomeIcon className={loop ? "icons icons-active":"icons"} onClick={()=>{
+                    setLoop(!loop)
+                }} icon={faUndo} aria-hidden="true" />
+                {/* last song */}
+                <FontAwesomeIcon className="icons" onClick={()=>{
+                if(songIndex!==0){
+                    setSongIndex(songIndex-1)
+                }else if(songIndex===0){
+                    setSongIndex(queueLength-1)
+                }
+                }} icon={faStepBackward} aria-hidden="true" />
+                {/* next song */}
+                <FontAwesomeIcon className="icons" onClick={()=>{
+                if(songIndex!==queueLength-1){
+                    setSongIndex(songIndex+1)
+                }else if(songIndex===queueLength-1){
+                    setSongIndex(0);
+                }
+                }} icon={faStepForward} aria-hidden="true" />
+            </div>
+        </div>
+    )
 }
 
 export default Player;

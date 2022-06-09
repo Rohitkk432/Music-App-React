@@ -1,54 +1,43 @@
-import {Component, React} from 'react';
+import {React, useEffect, useState} from 'react';
 import './playlist.css';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 import PlaylistBox from './playlist-box';
-import {delPlaylist,delQueueAddPlaylist} from '../../methods';
-import {currentId} from '../login_page_components/googlelogin';
+import {delPlaylist,delQueueAddPlaylist,getFullPlaylist} from '../../methods';
 
-class Playlist3 extends Component{
-    
-    constructor(){
-        super();
-        this.state = { fullPlaylist3: []};
-        
-    }
-    async componentDidMount() {
+function Playlist3 (){
 
-        await fetch(`https://music-pro-x-server.herokuapp.com/playlist/${currentId}/3`,{
-            method:"GET",
-        })
-        .then((res)=>res.json())
-        .then((playlist)=>{
-            // console.log("playlist3");
-            this.setState({fullPlaylist3:playlist})
-        })
-        .catch((err)=>console.log(err));
-    
-    }
-    render(){
-        return(
-            <>
-                <div className="playlist-list">
-                    <div className="playlist-title">
-                        <div>Playlist 3</div>
-                        <button className="clear-list-btn-playlist" onClick={(e)=>{
-                            e.preventDefault();
-                            delPlaylist(currentId,3);
-                        }}>Clear All</button>
-                        <button className="clear-list-btn-playlist" onClick={(e)=>{
-                            e.preventDefault();
-                            delQueueAddPlaylist(currentId,3);
-                        }}>Play</button>
-                    </div>
-                    <Scrollbars style={{width:"80%", height: "57vh"}}>
-                        {this.state.fullPlaylist3.map((song, idx) => (
-                            <PlaylistBox {...song} key={idx} />
-                        ))}
-                    </Scrollbars> 
+    const currentId = localStorage.getItem('id');
+
+    const [fullPlaylist3, setFullPlaylist3] = useState([]);
+    const [pupdate, setPupdate] = useState(0);
+
+    useEffect(()=>{
+        getFullPlaylist(currentId,3).then((playlist)=>setFullPlaylist3(playlist))
+    },[currentId,pupdate]);
+
+    return(
+        <>
+            <div className="playlist-list">
+                <div className="playlist-title">
+                    <div>Playlist 3</div>
+                    <button className="clear-list-btn-playlist" onClick={(e)=>{
+                        e.preventDefault();
+                        delPlaylist(currentId,3);
+                        setFullPlaylist3([]);
+                    }}>Clear All</button>
+                    <button className="clear-list-btn-playlist" onClick={(e)=>{
+                        e.preventDefault();
+                        delQueueAddPlaylist(currentId,3);
+                    }}>Play</button>
                 </div>
-            </>
-        )
-    }
+                <Scrollbars style={{width:"80%", height: "57vh"}} >
+                    {fullPlaylist3.map((song, idx) => (
+                        <PlaylistBox playlistno={1} updater={[pupdate,setPupdate]} {...song} key={idx} />
+                    ))}
+                </Scrollbars> 
+            </div>
+        </>
+    )    
 }
 
 export default Playlist3 ;

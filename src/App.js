@@ -3,18 +3,18 @@ import LoginPage from './components/loginpage';
 import AppHomePage from './components/app-home-page';
 import PlaylistPage from './components/playlist-page';
 import LikedPage from './components/liked-page';
-import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import {BrowserRouter as Router , Routes , Route} from 'react-router-dom';
 
 function App() {
   return (
     <Router>
       <div className='app'>
-        <Switch>
-          <Route path='/' exact component={LoginPage} />
-          <Route path='/home' component={AppHomePage} />
-          <Route path='/playlist' component={PlaylistPage} />
-          <Route path='/liked' component={LikedPage} />
-        </Switch>
+        <Routes>
+          <Route path='/' exact element={<LoginPage/>} />
+          <Route path='/home' element={<AppHomePage/>} />
+          <Route path='/playlist/*' element={<PlaylistPage/>} />
+          <Route path='/liked' element={<LikedPage/>} />
+        </Routes>
       </div>
     </Router>    
   );
