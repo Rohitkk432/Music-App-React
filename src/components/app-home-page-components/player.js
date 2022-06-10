@@ -20,7 +20,9 @@ function Player (params){
     const currentId = localStorage.getItem('id');
 
     useEffect(()=>{
-        getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        if(currentId!==null){
+            getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        }
     },[currentId,updater,setFullQueue]);
 
     
