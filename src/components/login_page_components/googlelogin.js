@@ -46,10 +46,6 @@ function Login () {
                 <div className="makers-org">A DevSoc Project</div>
             </div>
             <div className="logintext">
-                <div className="bitsdisclaimer">
-                    <div className="bits-disclaimer">Sign in using</div>
-                    <div className="bits-disclaimer">BITS mail</div>
-                </div>
                 <GoogleLogin
                     clientId="132873793273-jga64pb0l5nd25g2kjsr8rqm10tpt9pe.apps.googleusercontent.com"
                     buttonText="Login with Google"
@@ -60,6 +56,7 @@ function Login () {
                     onSuccess={onSuccess}
                     onFailure={onFailure}
                     cookiePolicy={'single_host_origin'}
+                    className="google-login"
                 />                
             </div>
         </div>

@@ -39,27 +39,29 @@ function LikedBox(props){
     }
 
     return(
-        <div className="L-result-box">
-            <div className="L-cover-img">
-                <img src={imgpath} alt="img" />
-            </div>
-            <div className="L-result-info">
-                <div className="L-result-title">{title}</div>
-                <div className="L-result-artist-duration">
-                    <div className="L-result-artist">{singer}</div>
-                    <div className="L-result-duration">{duration}</div>
+        <div className="L-liked-box">
+            <div className="L-result-box">
+                <div className="L-cover-img">
+                    <img src={imgpath} alt="img" />
                 </div>
-            </div>
-            <div className="L-result-options">
-                <div className="L-add-btn">
-                    <FontAwesomeIcon onClick={()=>setModal(!modalOpen)} className="L-icons-option" icon={faPlus} aria-hidden="true" />
-                    <AddModal/>
+                <div className="L-result-info">
+                    <div className="L-result-title">{title}</div>
+                    <div className="L-result-artist-duration">
+                        <div className="L-result-artist">{singer}</div>
+                        <div className="L-result-duration">{duration}</div>
+                    </div>
                 </div>
-                <FontAwesomeIcon className="L-icons-option" onClick={(e)=>{
-                e.preventDefault();
-                delSongInLiked(currentId,song_id);
-                setLupdate(lupdate+1);
-                }} icon={faMinus} aria-hidden="true" />
+                <div className="L-result-options">
+                    <div className="L-add-btn">
+                        <FontAwesomeIcon onClick={()=>setModal(!modalOpen)} className="L-icons-option" icon={faPlus} aria-hidden="true" />
+                        <AddModal/>
+                    </div>
+                    <FontAwesomeIcon className="L-icons-option" onClick={(e)=>{
+                    e.preventDefault();
+                    delSongInLiked(currentId,song_id);
+                    setLupdate(lupdate+1);
+                    }} icon={faMinus} aria-hidden="true" />
+                </div>
             </div>
         </div>
     )

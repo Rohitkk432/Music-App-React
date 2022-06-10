@@ -30,7 +30,7 @@ function Queue (params) {
     <>
         <div className="queue">
             <div className="queue-title">
-                    <div>Queue</div>
+                    <div className="qtitle" >Queue</div>
                     <button className="clear-list-btn-queue" onClick={(e)=>{
                         e.preventDefault();
                         delQueue(currentId);

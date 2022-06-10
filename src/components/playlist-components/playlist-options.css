@@ -10,10 +10,29 @@
 }
 .playlist-options {
     margin: 1rem;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 4px 4px 4px rgb(29, 29, 29);
+    background-color: #1A1A1A;
+    border-radius: 4px;
     padding: 0.5rem;
+    width: 10rem;
+    height: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pop1 {
+    border: 2px solid #38f9d7;
+    border-left: 6px solid #38f9d7;
+}
+.pop2 {
+    border: 2px solid rgb(242, 112, 156);
+    border-left: 6px solid rgb(242, 112, 156);
+}
+.pop3 {
+    border: 2px solid rgb(125, 89, 252);
+    border-left: 6px solid rgb(125, 89, 252);
 }
 @media screen and (max-width: 1000px) {
     .playlist-option-half {

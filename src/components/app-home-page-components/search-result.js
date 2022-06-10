@@ -50,26 +50,28 @@ const SearchResult = function(props){
     }
 
         return (
-            <div className="result-box">
-                <div className="cover-img">
-                    <img src={imgpath} alt="img" />
-                </div>
-                <div className="result-info">
-                    <div className="result-title">{title}</div>
-                    <div className="result-artist-duration">
-                        <div className="result-artist">{singer}</div>
-                        <div className="result-duration">{duration}</div>
+            <div className="resboxbox">
+                <div className="result-box">
+                    <div className="cover-img">
+                        <img src={imgpath} alt="img" />
                     </div>
-                </div>
-                <div className="result-options">
-                    <div className="add-btn">
-                        <FontAwesomeIcon  onClick={()=>setModal(!modalOpen)} className="icons-option" icon={faPlus}    aria-hidden="true" />
-                        <AddModal/>
+                    <div className="result-info">
+                        <div className="result-title">{title}</div>
+                        <div className="result-artist-duration">
+                            <div className="result-artist">{singer}</div>
+                            <div className="result-duration">{duration}</div>
+                        </div>
                     </div>
-                    <FontAwesomeIcon className="icons-option" onClick={(e)=>{
-                    e.preventDefault();
-                    checkAddSongInLiked(currentId,id);
-                    }} icon={faHeart} aria-hidden="true" />
+                    <div className="result-options">
+                        <div className="add-btn">
+                            <FontAwesomeIcon  onClick={()=>setModal(!modalOpen)} className="icons-option" icon={faPlus}    aria-hidden="true" />
+                            <AddModal/>
+                        </div>
+                        <FontAwesomeIcon className="icons-option" onClick={(e)=>{
+                        e.preventDefault();
+                        checkAddSongInLiked(currentId,id);
+                        }} icon={faHeart} aria-hidden="true" />
+                    </div>
                 </div>
             </div>
         );

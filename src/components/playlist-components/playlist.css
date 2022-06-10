@@ -16,28 +16,55 @@
     justify-content: center;
     align-items: center;
 }
+.ptitle{
+    color: whitesmoke;
+    font-weight: 500;
+}
 .clear-list-btn-playlist {
     font-size: 1.6rem;
     margin-left: 1rem;
     width: 8rem;
     height: 2.4rem;
-    border-radius: 10px;
-    box-shadow: 4px 4px 4px black;
-    background-color: gray;
+    border-radius: 6px;
+    box-shadow: 4px 4px 4px rgb(29, 29, 29);
+    background-color: #1A1A1A;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    border: 2px solid #3424a8;
 }
 .clear-list-btn-playlist:hover {
-    background-color: rgb(112, 112, 112);
+    background-color: rgb(19, 19, 19);
     color: whitesmoke;
 }
-.playlist-list-box {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 0.75rem;
+.P-playlist-box1 , .P-playlist-box2 , .P-playlist-box3 {
+    border-radius: 5px;
     height: 4rem;
     width: 90%;
-    margin: 7px;
+    margin-bottom: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.P-playlist-box1 {
+    background: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+.P-playlist-box2 {
+    background: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+}
+.P-playlist-box3 {
+    background: linear-gradient(109.6deg, rgb(218, 185, 252) 11.2%, rgb(125, 89, 252) 91.1%);
+}
+.playlist-list-box {
+    border-radius: 3px;
+    width: 97%;
+    height: 95%;
+    color: white;
+    background-color: #2d2d2d;
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -56,7 +83,9 @@
     }
 }
 @media screen and (max-width: 490px) {
-    .playlist-list-box {
+    .P-playlist-box1,
+    .P-playlist-box2,
+    .P-playlist-box3 {
         width: 87%;
     }
 }
@@ -146,31 +175,32 @@
     left: -1rem;
     z-index: 3;
     width: 6rem;
-    height: 6rem;
+    height: 6.2rem;
     font-size: 1.1rem;
-    background: black;
+    background: #1b1b1b;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
     border-top-left-radius: 0;
+    box-shadow: 0px 0px 6px 2px rgb(15, 15, 15);
 }
 .P-modal-options {
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     width: 5rem;
     height: 1.7rem;
-    background-color: grey;
+    background-color: rgb(41, 41, 41);
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    color: white;
+    border: 1px solid whitesmoke;
 }
 .P-modal-options:hover {
-    background-color: darkgray;
-    color: white;
-    text-decoration: none;
+    background-color: rgb(75, 75, 75);
 }
 
 @media screen and (max-width: 710px) {

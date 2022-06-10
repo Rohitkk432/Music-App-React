@@ -41,7 +41,7 @@ function SongSearch(params){
             </div>
             
             <div className="result-container">
-                <Scrollbars style={{ width:"70vw", height: "71vh", color:"white" }}>
+                <Scrollbars style={{ width:"70vw", height: "69vh", color:"white" }}>
                     {songs.map((song, idx) => (
                         <SearchResult upd={[upd2,setUpd2]} data={[fullQueue, setFullQueue]} {...song} key={idx} />
                     ))}

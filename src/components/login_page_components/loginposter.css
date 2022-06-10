@@ -32,28 +32,17 @@
 .main-poster {
     width: 30rem;
 }
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1040px) {
     .poster-container {
-        height: 65vh;
-        width: 100vw;
-        overflow: hidden;
-    }
-}
-@media screen and (max-width: 950px) {
-    .poster-container {
-        height: 65vh;
-        width: 100vw;
-        overflow: hidden;
-        flex-direction: column;
+        width: 95vw;
     }
     .main-poster {
         width: 25rem;
     }
-    .poster-side {
-        flex-direction: row;
-    }
-    .postercomponent {
-        width: 12rem;
+}
+@media screen and (max-width: 720px) {
+    .poster-side{
+        display: none;
     }
 }
 @media screen and (max-width: 450px) {

@@ -45,7 +45,7 @@ function Player (params){
                 controls={true}
                 loop={loop}
                 controlsList="nodownload"
-                style={{width:"90%",height:"3rem"}}
+                style={{width:"100%",height:"3rem"}}
                 onEnded={()=>{
                     if(songIndex!==queueLength-1){
                         setSongIndex(songIndex+1)
@@ -64,7 +64,7 @@ function Player (params){
                     setSongIndex(Math.trunc(Math.random()*queueLength))
                 }} icon={faRandom} aria-hidden="true" />
                 {/* loop over same song */}
-                <FontAwesomeIcon className={loop ? "icons icons-active":"icons"} onClick={()=>{
+                <FontAwesomeIcon className={loop ? "icons icons-active":"icons icons-inactive"} onClick={()=>{
                     setLoop(!loop)
                 }} icon={faUndo} aria-hidden="true" />
                 {/* last song */}

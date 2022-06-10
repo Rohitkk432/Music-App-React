@@ -42,31 +42,33 @@ function PlaylistBox(props){
     }
 
     return(
-        <div className="playlist-list-box">
-            <div className="P-cover-img">
-                <img src={imgpath} alt="img" />
-            </div>
-            <div className="P-result-info">
-                <div className="P-result-title">{title}</div>
-                <div className="P-result-artist-duration">
-                    <div className="P-result-artist">{singer}</div>
-                    <div className="P-result-duration">{duration}</div>
+        <div className={(playlistno===1)?"P-playlist-box1":(playlistno===2)?"P-playlist-box2":"P-playlist-box3"}>
+            <div className="playlist-list-box">
+                <div className="P-cover-img">
+                    <img src={imgpath} alt="img" />
                 </div>
-            </div>
-            <div className="P-result-options">
-                <div className="P-add-btn">
-                    <FontAwesomeIcon onClick={()=>setModal(!modalOpen)} className="P-icons-option" icon={faPlus} aria-hidden="true" />
-                    <AddModal/>
+                <div className="P-result-info">
+                    <div className="P-result-title">{title}</div>
+                    <div className="P-result-artist-duration">
+                        <div className="P-result-artist">{singer}</div>
+                        <div className="P-result-duration">{duration}</div>
+                    </div>
                 </div>
-                <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
-                e.preventDefault();
-                checkAddSongInLiked(currentId,song_id);
-                }} icon={faHeart} aria-hidden="true" />
-                <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
-                e.preventDefault();
-                delSongInPlaylist(currentId,song_id,playlist_number);
-                setPupdate(pupdate+1);
-                }} icon={faMinus} aria-hidden="true" />
+                <div className="P-result-options">
+                    <div className="P-add-btn">
+                        <FontAwesomeIcon onClick={()=>setModal(!modalOpen)} className="P-icons-option" icon={faPlus} aria-hidden="true" />
+                        <AddModal/>
+                    </div>
+                    <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
+                    e.preventDefault();
+                    checkAddSongInLiked(currentId,song_id);
+                    }} icon={faHeart} aria-hidden="true" />
+                    <FontAwesomeIcon className="P-icons-option" onClick={(e)=>{
+                    e.preventDefault();
+                    delSongInPlaylist(currentId,song_id,playlist_number);
+                    setPupdate(pupdate+1);
+                    }} icon={faMinus} aria-hidden="true" />
+                </div>
             </div>
         </div>
     )

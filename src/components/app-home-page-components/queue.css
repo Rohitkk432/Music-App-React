@@ -15,32 +15,55 @@
     justify-content: flex-start;
     align-items: center;
 }
+.qtitle{
+    color: white;
+    font-weight: 600;
+}
+
+
 .clear-list-btn-queue {
     font-size: 1.6rem;
     width: 8rem;
     height: 2.4rem;
     margin-left: 1rem;
     border-radius: 10px;
-    box-shadow: 4px 4px 4px black;
-    background-color: gray;
+    box-shadow: 4px 4px 4px rgb(29, 29, 29);
+    background-color: #1A1A1A;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    border: 2px solid #3424a8;
 }
 .clear-list-btn-queue:hover {
-    background-color: rgb(112, 112, 112);
+    background-color: rgb(19, 19, 19);
     color: whitesmoke;
 }
+.Q-resboxbox{
+    align-items: center;
+    border-radius: 5px;
+    height: 3.5rem;
+    margin: 15px;
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(to right, #90E5E5 0%, #3A27D3 100%);
+}
 .queue-list-box {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #1a1a1a;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border-radius: 15px;
-    height: 3.2rem;
-    margin: 15px;
-    width: 90%;
+    
+    width: 97%;
+    height: 95%;
+    color: white;
+    border-radius: 3px;
 }
 
 @media screen and (max-width: 1050px) {
@@ -127,31 +150,32 @@
     left: -1rem;
     z-index: 3;
     width: 6rem;
-    height: 6rem;
+    height: 6.2rem;
     font-size: 1.1rem;
-    background: black;
+    background: #1b1b1b;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
     border-top-left-radius: 0;
+    box-shadow: 0px 0px 6px 2px rgb(15, 15, 15);
 }
 .Q-modal-options {
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     width: 5rem;
     height: 1.7rem;
-    background-color: grey;
+    background-color: rgb(41, 41, 41);
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    color: white;
+    border: 1px solid whitesmoke;
 }
 .Q-modal-options:hover {
-    background-color: darkgray;
-    color: white;
-    text-decoration: none;
+    background-color: rgb(75, 75, 75);
 }
 @media screen and (max-width: 500px) {
     .Q-add-modal {

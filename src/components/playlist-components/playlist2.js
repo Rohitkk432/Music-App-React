@@ -19,7 +19,7 @@ function Playlist2 (){
         <>
             <div className="playlist-list">
                 <div className="playlist-title">
-                    <div>Playlist 2</div>
+                    <div className="ptitle" >Playlist 2</div>
                     <button className="clear-list-btn-playlist" onClick={(e)=>{
                         e.preventDefault();
                         delPlaylist(currentId,2);
@@ -32,7 +32,7 @@ function Playlist2 (){
                 </div>
                 <Scrollbars style={{width:"80%", height: "57vh"}} >
                     {fullPlaylist2.map((song, idx) => (
-                        <PlaylistBox playlistno={1} updater={[pupdate,setPupdate]} {...song} key={idx} />
+                        <PlaylistBox playlistno={2} updater={[pupdate,setPupdate]} {...song} key={idx} />
                     ))}
                 </Scrollbars> 
             </div>

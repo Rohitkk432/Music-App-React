@@ -19,7 +19,7 @@ function Playlist1 (){
         <>
             <div className="playlist-list">
                 <div className="playlist-title">
-                    <div>Playlist 1</div>
+                    <div className="ptitle">Playlist 1</div>
                     <button className="clear-list-btn-playlist" onClick={(e)=>{
                         e.preventDefault();
                         delPlaylist(currentId,1);
