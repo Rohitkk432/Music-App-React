@@ -2,6 +2,8 @@
 
 # Music Pro X - DevSoc Project.
 
+Hosted at https://musicprox.netlify.app/ 
+
 ## About
 MusicProX is a app where you can search songs . Add songs to queue ,playlist and liked.
 And play them with the MusicProX player.
@@ -9,7 +11,7 @@ And play them with the MusicProX player.
 **SERVER REPO LINK** - https://github.com/Rohitkk432/musicprox-server.git
 
 ## Table of Contents
-- [Disclaimer](#disclaimer)
+- [Database Schema ](#database-schema)
 - [Browser Support 🌐](#browser-support)
 - [Installation 🐣](#installation)
 - [Contribution Guidelines ✒](#contribution-guidelines)
@@ -20,14 +22,7 @@ And play them with the MusicProX player.
 - [Individual Contribution ☕](#individual-contribution)
 - [SnapShots](#snapshots)
 
-## Disclaimer
-1. Currently the client side is hosted on netlify - https://musicprox.netlify.app/ <br/>
-
-2. Working video on local machine- <br />
-low quality video - https://drive.google.com/file/d/15PxifYNtUOKM8zn6wikt0jYGpLiKWZOr/view?usp=sharing <br />
-better quality video - https://drive.google.com/file/d/1yI2mKTMFCnxeqEE_upZwzQHl56j8JDgY/view?usp=sharing
-
-#### Database Schema
+## Database Schema
 ![image](https://user-images.githubusercontent.com/74586376/119724049-d482b700-be8b-11eb-8be0-d48eeca40c63.png)
 
 
