@@ -21,7 +21,9 @@ function Queue (params) {
     }
 
     useEffect(()=>{
-        getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        if(currentId!==null){
+            getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        }
     },[currentId,updater,setFullQueue]);
 
     return(
