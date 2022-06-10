@@ -19,7 +19,9 @@ function MusicUI (){
     const [upd2 , setUpd2] = useState(0);
 
     useEffect(()=>{
-        getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        if(currentId!==null){
+            getFullQueue(currentId).then((list)=>{setFullQueue(list)});
+        }
     },[currentId]);
 
     useEffect(()=>{
