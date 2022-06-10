@@ -111,25 +111,25 @@ $ cd Music-Pro-X
 ## Snapshots
 
 ### Login Page
-![image](https://user-images.githubusercontent.com/74586376/119718715-879be200-be85-11eb-92b6-763027702b85.png)
+<img width="954" alt="image" src="https://user-images.githubusercontent.com/74586376/173111849-29756ee2-49da-4280-94ed-78fcf5110d13.png">
 
 ### App Home Page 
-![image](https://user-images.githubusercontent.com/74586376/119718787-9bdfdf00-be85-11eb-9ebb-0583456ead9f.png)
+<img width="957" alt="image" src="https://user-images.githubusercontent.com/74586376/173111905-28f808d5-6dfe-4af1-86c2-4abf730b8c4a.png">
 
 #### Songs addding functionality
-![image](https://user-images.githubusercontent.com/74586376/119718940-cf226e00-be85-11eb-866c-db3afd63149c.png)
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/74586376/173111969-ae1a11ab-5fe9-4620-974d-c1e26f9fcec4.png">
 
 ### Queue and Music Player
-![image](https://user-images.githubusercontent.com/74586376/119719021-eb260f80-be85-11eb-936d-3fe5bf5891ca.png)
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/74586376/173112010-afd54d9f-49a4-48dc-82df-be189afce843.png">
 
 ### Liked Songs Page
-![image](https://user-images.githubusercontent.com/74586376/119719092-fda04900-be85-11eb-9fbc-e191ad434836.png)
+<img width="957" alt="image" src="https://user-images.githubusercontent.com/74586376/173112067-a558cdfb-e595-46fa-a4a9-02279aeb9c99.png">
 
 ### Playlist Page 
-![image](https://user-images.githubusercontent.com/74586376/119719142-0e50bf00-be86-11eb-9ab5-1b4ba3a596bd.png)
+<img width="957" alt="image" src="https://user-images.githubusercontent.com/74586376/173112120-cbcbb3fe-97ff-481f-99f4-67eae925eca1.png">
 
 #### Music PLayer
-![image](https://user-images.githubusercontent.com/74586376/119719266-33453200-be86-11eb-9310-ff449be0dea8.png)
+<img width="394" alt="image" src="https://user-images.githubusercontent.com/74586376/173112211-246758ab-b8e5-488e-8e24-7722cd3cc1e5.png">
 
 
 ### Social Media
