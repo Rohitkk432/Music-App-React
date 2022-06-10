@@ -39,7 +39,7 @@ function Queue (params) {
                     }}>Clear All</button>
                 </div>
             <div className="list-of-queue">
-                <Scrollbars style={{ width:"90%", height: "25rem" }}>
+                <Scrollbars style={{ width:"95%", height: "25rem"}}>
                     {fullQueue.map((song, idx) => (
                         <QueueBox upd={[upd2,setUpd2]} data={[fullQueue, setFullQueue]} {...song} key={idx} />
                     ))}

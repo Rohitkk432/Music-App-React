@@ -77,16 +77,37 @@
         align-items: center;
     }
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
     .playlist-list {
-        width: 90vw;
+        width: 95vw;
     }
 }
-@media screen and (max-width: 490px) {
+@media screen and (max-width: 560px) {
+    .playlist-title {
+        font-size: 2rem;
+    }
+    .clear-list-btn-playlist {
+        font-size: 1.3rem;
+        margin-left: 1rem;
+        width: 6rem;
+    }
+}
+@media screen and (max-width: 435px) {
+    .playlist-title {
+        font-size: 1.7rem;
+    }
+
+    .clear-list-btn-playlist {
+        font-size: 1.2rem;
+        margin-left: 0.5rem;
+        width: 5.5rem;
+    }
+}
+@media screen and (max-width: 750px) {
     .P-playlist-box1,
     .P-playlist-box2,
     .P-playlist-box3 {
-        width: 87%;
+        width: 100%;
     }
 }
 .P-cover-img img {
@@ -135,7 +156,11 @@
 .P-icons-option:hover {
     color: white;
 }
-
+@media screen and (max-width: 750px) {
+    .P-result-options {
+        margin: 0 10px;
+    }
+}
 @media screen and (max-width: 620px) {
     .P-icons-option {
         margin-left: 6px;

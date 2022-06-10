@@ -85,7 +85,7 @@
         align-items: center;
         top: 3.6rem;
         width: 30%;
-        height: 35%;
+        padding-bottom:5px ;
         border-radius: 4px;
         border: 1.5px solid rgb(2, 25, 156);
         border-top: 0;
@@ -140,9 +140,6 @@
         font-size: 1.4rem !important;
         width: 8rem;
         padding-left: 3px !important;
-    }
-    .nav-tabs {
-        height: 35%;
     }
 }
 @media screen and (max-width: 440px) {

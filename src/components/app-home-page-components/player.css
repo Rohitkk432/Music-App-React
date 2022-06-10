@@ -77,14 +77,43 @@
     border-left: 5px solid rgb(38, 173, 38);
 }
 
+@media screen and (max-width: 600px) {
+    .icons {
+        padding: 10px 12px;
+        margin: 7px;
+    }
+}
+
 @media screen and (max-width: 510px) {
     .box-image {
         width: 18rem;
         height: 9rem;
         margin-top: 2.5rem;
+    }    
+}
+
+@media screen and (max-width: 480px) {
+    .musicprox-player{
+        transform: scale(0.9);
+    }
+    .icons{
+        margin: 5px;
+    }
+    .autoplay ,.autoplay-active{
+        padding: 10px 0px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .controls {
+        flex-wrap: wrap;
     }
     .icons {
         margin: 7px;
-        font-size: 20px;
+    }
+
+    .autoplay,
+    .autoplay-active {
+        padding: 10px
     }
 }
