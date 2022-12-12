@@ -21,7 +21,7 @@ function Login () {
     }
     
     function checkOfUser(){
-        fetch(`https://music-pro-x-server.herokuapp.com/users/${currentUser}`,{ method: "GET"})
+        fetch(`https://musicprox-server.onrender.com/users/${currentUser}`,{ method: "GET"})
         .then((resp)=>resp.json())
         .then((res)=>{
             if(res){
@@ -51,7 +51,7 @@ function Login () {
                     buttonText="Login with Google"
                     prompt="select_account"
                     uxMode="popup"
-                    redirectUri="https://musicprox.netlify.app/home"
+                    redirectUri="https://music-pro-x.vercel.app/home"
                     isSignedIn={true}
                     onSuccess={onSuccess}
                     onFailure={onFailure}

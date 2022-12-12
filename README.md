@@ -60,7 +60,7 @@ $ cd Music-Pro-X
 ## Things learnt during project 
 **Rohit Kodam**-<br/>
 1. At the start of the project i only knew how to use HTML, CSS, JS. but during the project i learned PostgreSQL , express(basics), APIs, HTTP requests, Postman, ReactJS.
-2. I learnt how to deploy website on netlify(i used for client-side) and heroku(i used for server-side).
+2. I learnt how to deploy website on Vercel(i used for client-side) and Render(i used for server-side).
 3. Faced many issues with google login and atlast resorted to use React Library for it.
 4. i didnt know in the start of project how to use database , that we have to deploy server and client seperately, that there is even a server side but now i have learnt about it. 
 
