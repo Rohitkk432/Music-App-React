@@ -20,8 +20,8 @@ function Login () {
         console.log(res);
     }
     
-    function checkOfUser(){
-        fetch(`https://musicprox-server.onrender.com/users/${currentUser}`,{ method: "GET"})
+    const checkOfUser=async()=>{
+        await fetch(`https://musicprox-server.onrender.com/users/${currentUser}`,{ method: "GET"})
         .then((resp)=>resp.json())
         .then((res)=>{
             if(res){
