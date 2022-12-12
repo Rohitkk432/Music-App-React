@@ -1,5 +1,5 @@
 // import React from 'react';
-const link = 'https://music-pro-x-server.herokuapp.com'
+const link = 'https://musicprox-server.onrender.com'
 
 //User methods
 //checking if user exists
