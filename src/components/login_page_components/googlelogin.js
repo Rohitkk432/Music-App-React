@@ -47,7 +47,7 @@ function Login () {
             </div>
             <div className="logintext">
                 <GoogleLogin
-                    clientId="132873793273-jga64pb0l5nd25g2kjsr8rqm10tpt9pe.apps.googleusercontent.com"
+                    clientId="132873793273-q8edlh1spu7cmf4pr5vp64ponkfoguhv.apps.googleusercontent.com"
                     buttonText="Login with Google"
                     prompt="select_account"
                     uxMode="popup"
