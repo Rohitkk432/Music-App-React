@@ -1,6 +1,5 @@
 // import React from 'react';
-const link = 'https://musicprox-server.onrender.com'
-
+const link = `http://localhost:4000`;
 //User methods
 //checking if user exists
 const checkExistingUser = async function(email){

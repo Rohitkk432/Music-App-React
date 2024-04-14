@@ -4,8 +4,6 @@ import logo from '../../images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
-import SignoutButtton from './signoutbutton';
-
 
 function Nav (){
     const [isHidden ,setIsHidden] = useState(true);
@@ -26,7 +24,6 @@ function Nav (){
                         <Link to='/liked' style={{ textDecoration: 'none' }}>
                             <div className="nav-elements">Liked</div>
                         </Link>
-                        <SignoutButtton />
                     </div>
                     <div  onClick={()=> setIsHidden(!isHidden)} className="hamburger"><FontAwesomeIcon icon={faBars} aria-hidden="true" /></div>
                 </div>
