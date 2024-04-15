@@ -19,7 +19,6 @@ And play them with the MusicProX player.
 - [How to use ? 📖](#how-to-use)
 - [Current Implementations 👨‍💻](#current-implementations)
 - [Future Implementations 💻](#future-implementations)
-- [Individual Contribution ☕](#individual-contribution)
 - [SnapShots](#snapshots)
 
 ## Database Schema
@@ -44,6 +43,35 @@ $ cd Music-Pro-X
 
 ```
 
+Client Setup
+```
+$ cd client
+
+# Install dependencies
+$ npm install --lagacy-peer-deps
+
+(change server link : default set to localhost:4000)
+(change google oauth cleint id in ./src/index.js)
+
+# start client
+$ npm run start
+```
+
+Server Setup
+```
+$ cd server
+$ npm install
+
+(create local postgres db using pgadmin and configure .env as per index.js)
+# Populate db
+$ cd ./db_queries
+$ psql -U username -d myDataBase -a -f create_tables.sql
+$ psql -U username -d myDataBase -a -f add_songs.sql
+
+# start server
+$ npm run dev
+```
+
 ## Contribution Guidelines
 1. **Fork** the repo on GitHub.
 2. **Clone** the project to your own machine.
@@ -58,20 +86,10 @@ $ cd Music-Pro-X
 3. One pull request should cater to only one change. *A change may include multiple file changes that are essential to solving the issue/change.
 
 ## Things learnt during project 
-**Rohit Kodam**-<br/>
 1. At the start of the project i only knew how to use HTML, CSS, JS. but during the project i learned PostgreSQL , express(basics), APIs, HTTP requests, Postman, ReactJS.
 2. I learnt how to deploy website on Vercel(i used for client-side) and Render(i used for server-side).
 3. Faced many issues with google login and atlast resorted to use React Library for it.
 4. i didnt know in the start of project how to use database , that we have to deploy server and client seperately, that there is even a server side but now i have learnt about it. 
-
-**Shlok Sinha**-<br/>
-1. Learnt about different desgin choices and color schemes, and why these are important
-2. Used JavaScript without the help of any tutorials and found out how helpful it is.
-3. Learnt how to work in a team, the technical skills needed.
-
-**Naman Ajay Markhedkar**-<br/>
-1. Used HTML , CSS to add to the layout/style of the website.
-2. Learnt to manage time to handle multiple tasks together.
 
 ## How to use?
 1. Login using BITS mail id (as the app is only for students of BITS).
@@ -91,24 +109,11 @@ $ cd Music-Pro-X
 2. Footer should also control the player like pause play and other features.
 3. lists like playlists and queue are only rerendering when we move to another section and come back that needs to be improved.
 
-## Individual Contribution
-**Rohit Kodam** -<br />
-1. Entire server-side using express and postgress.<br />
-2. Converted everything to React of the Pages written in HTML CSS .<br />
-3. Built a postgres database .<br />
-4. implemented Google login .<br />
-<br />
-
-**Shlok Sinha** -<br>
-1. Made music player section, Playlist, Liked, Nav-bar using HTML,CSS.<br />
-2. Added the functionality to arrow keys (only) in music players and hamburger menu in nav-bar using Js.<br />
-<br />
-
-**Naman Ajay Markhedkar** <br />
-1. Worked on the Home page to create poster showing part.
-2. Worked over design.
-
 ## Snapshots
+
+### Demo Video -
+
+https://www.loom.com/share/1e2c0437f7e24dbf90c5157f44b0dac0
 
 ### Login Page
 <img width="954" alt="image" src="https://user-images.githubusercontent.com/74586376/173111849-29756ee2-49da-4280-94ed-78fcf5110d13.png">
