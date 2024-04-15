@@ -2,13 +2,9 @@
 
 # Music Pro X - DevSoc Project.
 
-Hosted at https://music-pro-x.vercel.app/
-
 ## About
 MusicProX is a app where you can search songs . Add songs to queue ,playlist and liked.
 And play them with the MusicProX player.
-
-**SERVER REPO LINK** - https://github.com/Rohitkk432/musicprox-server.git
 
 ## Table of Contents
 - [Database Schema ](#database-schema)
