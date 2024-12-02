@@ -3,33 +3,45 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { usePlayer } from '@/context/PlayerContext'
-import MainLayout from '@/components/layout/MainLayout'
+import { usePlaylistModal } from '@/context/PlaylistModalContext'
 import { getLikedSongs, removeFromLiked } from '@/lib/api'
-import { PlayIcon, HeartIcon } from '@heroicons/react/24/solid'
+import MainLayout from '@/components/layout/MainLayout'
+import SongCard from '@/components/music/SongCard'
+import Loading from '@/components/ui/Loading'
+import { PlayIcon } from '@heroicons/react/24/solid'
 import type { Song } from '@/types/music'
 
 export default function LikedPage() {
   const [songs, setSongs] = useState<Song[]>([])
-  const [loading, setLoading] = useState(true)
-  const { userId } = useAuth()
-  const { addToQueue, clearQueue, playSong } = usePlayer()
+  const { loading, userId } = useAuth()
+  const { addToQueue, playSong, clearQueue } = usePlayer()
+  const { openPlaylistModal } = usePlaylistModal()
 
   useEffect(() => {
-    async function loadLikedSongs() {
-      if (!userId) return
-
-      try {
-        const items = await getLikedSongs(userId)
-        setSongs(items)
-      } catch (error) {
-        console.error('Failed to load liked songs:', error)
-      } finally {
-        setLoading(false)
-      }
+    if (userId) {
+      fetchLikedSongs()
     }
-
-    loadLikedSongs()
   }, [userId])
+
+  const fetchLikedSongs = async () => {
+    if (!userId) return
+    try {
+      const data = await getLikedSongs(userId)
+      setSongs(data)
+    } catch (error) {
+      console.error('Failed to fetch liked songs:', error)
+    }
+  }
+
+  const handleUnlike = async (songId: string) => {
+    if (!userId) return
+    try {
+      await removeFromLiked(userId, songId)
+      await fetchLikedSongs()
+    } catch (error) {
+      console.error('Failed to remove from liked:', error)
+    }
+  }
 
   const handlePlayAll = async () => {
     if (!songs.length) return
@@ -38,23 +50,13 @@ export default function LikedPage() {
     playSong(songs[0]) // Play the first song
   }
 
-  const handleUnlike = async (songId: number) => {
-    if (!userId) return
-
-    try {
-      await removeFromLiked(userId, songId.toString())
-      setSongs(prev => prev.filter(song => song.id !== songId))
-    } catch (error) {
-      console.error('Failed to unlike song:', error)
-    }
-  }
-
+  if (loading) return <Loading />
   if (!userId) return null
 
   return (
     <MainLayout>
       <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Header */}
+        {/* Header with Play All */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 
@@ -80,79 +82,28 @@ export default function LikedPage() {
             </button>
           )}
         </div>
-
-        {/* Content */}
-        {loading ? (
-          <div className="flex items-center justify-center py-12">
-            <div className="w-10 h-10 border-2 border-blue-500 border-t-transparent 
-                         rounded-full animate-spin" />
-          </div>
-        ) : songs.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-400 mb-2">
+        
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {songs.length === 0 ? (
+            <div className="col-span-full text-center text-gray-400 py-8">
               No liked songs yet
-            </p>
-            <p className="text-sm text-gray-500">
-              Start liking songs to add them here
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {songs.map((song) => (
-              <div 
+            </div>
+          ) : (
+            songs.map(song => (
+              <SongCard
                 key={song.id}
-                className="flex items-center justify-between p-3 bg-gray-800 
-                         hover:bg-gray-700 rounded-lg transition-all duration-300
-                         hover:scale-[1.01] group"
-              >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <div className="relative group/play">
-                    <img 
-                      src={song.imgpath} 
-                      alt={song.title}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover 
-                               shadow-lg transition-transform duration-300
-                               group-hover/play:scale-105"
-                    />
-                    <button
-                      onClick={() => playSong(song)}
-                      className="absolute inset-0 flex items-center justify-center 
-                               bg-gray-900 opacity-0 group-hover/play:opacity-90 
-                               transition-all duration-300 rounded-lg
-                               ring-1 ring-blue-500/0 group-hover/play:ring-blue-500"
-                      title="Play"
-                    >
-                      <PlayIcon className="w-6 h-6 transform scale-90 
-                                       group-hover/play:scale-100 transition-transform" />
-                    </button>
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-medium text-sm truncate text-gray-100">
-                      {song.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 truncate">
-                      {song.singer}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-400 hidden sm:block">
-                    {song.duration}
-                  </span>
-                  <button
-                    onClick={() => handleUnlike(song.id)}
-                    className="p-2 text-red-500 hover:bg-gray-600 rounded-lg 
-                           transition-all duration-300 hover:scale-105"
-                    title="Unlike"
-                  >
-                    <HeartIcon className="w-5 h-5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+                {...song}
+                userId={userId}
+                isLiked={true}
+                onPlay={() => playSong(song)}
+                onAddToQueue={() => addToQueue(song)}
+                onAddToPlaylist={() => openPlaylistModal(song)}
+                onLike={() => handleUnlike(song.id.toString())}
+              />
+            ))
+          )}
+        </div>
       </div>
     </MainLayout>
   )
