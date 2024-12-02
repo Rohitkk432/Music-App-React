@@ -10,6 +10,21 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: 'next-image-loader',
+          options: {
+            isDev: false,
+            isServer: false,
+          },
+        },
+      ],
+    })
+    return config
+  },
 }
 
 module.exports = nextConfig 

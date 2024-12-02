@@ -76,17 +76,17 @@ export default function PlaylistPage() {
     <MainLayout>
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* Header with Toggle */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-          <h1 className="text-3xl font-bold">Your Playlist</h1>
+        <div className="flex flex-col gap-4 mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold">Your Playlist</h1>
           
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             {/* Playlist Toggle */}
-            <div className="flex rounded-lg overflow-hidden bg-gray-800">
+            <div className="flex rounded-lg overflow-hidden bg-gray-800 w-full sm:w-auto">
               {['1', '2', '3'].map((num) => (
                 <button
                   key={num}
                   onClick={() => setCurrentPlaylist(num)}
-                  className={`px-4 py-2 text-sm font-medium transition-colors
+                  className={`flex-1 sm:flex-none px-4 py-2.5 text-sm font-medium transition-colors
                     ${currentPlaylist === num 
                       ? 'bg-blue-600 text-white' 
                       : 'text-gray-400 hover:text-white hover:bg-gray-700'}`}
@@ -100,8 +100,8 @@ export default function PlaylistPage() {
             {playlists[currentPlaylist]?.length > 0 && (
               <button
                 onClick={handlePlayPlaylist}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 
-                         rounded-lg text-sm transition-colors"
+                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 
+                         hover:bg-blue-700 rounded-lg text-sm transition-colors w-full sm:w-auto"
               >
                 <PlayIcon className="w-4 h-4" />
                 Play All
@@ -114,8 +114,8 @@ export default function PlaylistPage() {
         {loading ? (
           <div className="text-center py-8">Loading...</div>
         ) : (
-          <div className="bg-gray-800/50 rounded-lg p-6">
-            <div className="space-y-3">
+          <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6">
+            <div className="space-y-2 sm:space-y-3">
               {playlists[currentPlaylist]?.length === 0 ? (
                 <p className="text-center text-gray-400 py-8">
                   This playlist is empty
@@ -125,24 +125,26 @@ export default function PlaylistPage() {
                   return (
                     <div 
                       key={song.id}
-                      className="flex items-center gap-3 p-2 bg-gray-700/30 rounded-lg group"
+                      className="flex items-center gap-3 p-2 sm:p-3 bg-gray-700/30 
+                               rounded-lg group hover:bg-gray-700/50 transition-colors"
                     >
                       <img 
                         src={song.imgpath} 
                         alt={song.title}
-                        className="w-12 h-12 rounded object-cover"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover"
                       />
                       <div className="flex-1 min-w-0">
                         <h3 className="font-medium text-sm truncate">
                           {song.title}
                         </h3>
-                        <p className="text-sm text-gray-400 truncate">
+                        <p className="text-xs sm:text-sm text-gray-400 truncate">
                           {song.singer}
                         </p>
                       </div>
                       <button
                         onClick={() => handleRemoveSong(song.id)}
-                        className="p-1 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all"
+                        className="p-2 text-gray-400 hover:text-red-500 
+                                 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
                         title="Remove from playlist"
                       >
                         <XMarkIcon className="w-5 h-5" />

@@ -34,7 +34,7 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
 
   const handleAddToPlaylist = async (playlistNumber: number) => {
     try {
-      await addToPlaylist(userId, song.id, playlistNumber)
+      await addToPlaylist(userId, song.id.toString(), playlistNumber)
       setShowPlaylistModal(false)
     } catch (error) {
       console.error('Failed to add to playlist:', error)
@@ -46,9 +46,9 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
 
     try {
       if (isLiked) {
-        await removeFromLiked(userId, song.id)
+        await removeFromLiked(userId, song.id.toString())
       } else {
-        await addToLiked(userId, song.id)
+        await addToLiked(userId, song.id.toString())
       }
       setIsLiked(!isLiked)
     } catch (error) {
@@ -57,9 +57,9 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
   }
 
   return (
-    <div className="flex items-center justify-between p-3 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg transition-colors">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg transition-colors gap-3">
       <div className="flex items-center gap-3 flex-1 min-w-0">
-        <div className="relative group">
+        <div className="relative group shrink-0">
           <img 
             src={song.imgpath} 
             alt={song.title}
@@ -79,35 +79,37 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <span className="text-sm text-gray-400 mr-2">
+      <div className="flex items-center gap-2 ml-auto">
+        <span className="text-sm text-gray-400 mr-2 hidden sm:inline">
           {song.duration}
         </span>
         
-        <button
-          onClick={() => addToQueue(song)}
-          className="p-2 hover:bg-gray-600 rounded-full transition-colors"
-          title="Add to queue"
-        >
-          <QueueListIcon className="w-4 h-4" />
-        </button>
+        <div className="flex gap-1">
+          <button
+            onClick={() => addToQueue(song)}
+            className="p-2 hover:bg-gray-600 rounded-full transition-colors"
+            title="Add to queue"
+          >
+            <QueueListIcon className="w-4 h-4" />
+          </button>
 
-        <button
-          onClick={() => setShowPlaylistModal(true)}
-          className="p-2 hover:bg-gray-600 rounded-full transition-colors"
-          title="Add to playlist"
-        >
-          <PlusIcon className="w-4 h-4" />
-        </button>
+          <button
+            onClick={() => setShowPlaylistModal(true)}
+            className="p-2 hover:bg-gray-600 rounded-full transition-colors"
+            title="Add to playlist"
+          >
+            <PlusIcon className="w-4 h-4" />
+          </button>
 
-        <button
-          onClick={handleToggleLike}
-          className={`p-2 hover:bg-gray-600 rounded-full transition-colors
-                   ${isLiked ? 'text-red-500' : ''}`}
-          title={isLiked ? 'Remove from liked' : 'Add to liked'}
-        >
-          <HeartIcon className="w-4 h-4" />
-        </button>
+          <button
+            onClick={handleToggleLike}
+            className={`p-2 hover:bg-gray-600 rounded-full transition-colors
+                     ${isLiked ? 'text-red-500' : ''}`}
+            title={isLiked ? 'Remove from liked' : 'Add to liked'}
+          >
+            <HeartIcon className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* Playlist Modal */}

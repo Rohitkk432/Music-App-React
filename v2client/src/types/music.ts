@@ -1,20 +1,22 @@
 export interface Song {
-    id: string;
+    id: number;
     title: string;
     singer: string;
-    duration: string;
-    imgpath: string;
     audiopath: string;
+    imgpath: string;
+    duration: string;
   }
   
   export interface QueueItem {
-    id: string;
-    user_id: string;
-    song_id: string;
+    id: number;
+    user_id: number;
+    song_id: number;
   }
   
-  export interface PlaylistItem extends Song {
-    id: string;
+  export interface PlaylistItem {
+    id: number;
+    user_id: number;
+    song_id: number;
     playlist_number: number;
   }
   
@@ -26,7 +28,7 @@ export interface Song {
   }
   
   export interface LikedItem {
-    id: string;
-    user_id: string;
-    song_id: string;
+    id: number;
+    user_id: number;
+    song_id: number;
   }

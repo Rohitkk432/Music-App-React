@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
+import GoogleLogo from './google-logo'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -65,14 +66,7 @@ export default function LoginPage() {
                 <div className="w-5 h-5 border-2 border-gray-900 border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
-                  <Image 
-                    src="/google.svg" 
-                    alt="Google logo" 
-                    width={18} 
-                    height={18} 
-                    className="opacity-80"
-                    priority
-                  />
+                  <GoogleLogo />
                   <span>Continue with Google</span>
                 </>
               )}

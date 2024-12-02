@@ -3,15 +3,18 @@
 import { useSession } from 'next-auth/react'
 import { AuthProvider } from './AuthProvider'
 import { PlayerProvider } from '@/context/PlayerContext'
+import { ToastProvider } from '@/context/ToastContext'
 import { useEffect, useState } from 'react'
 import { getOrCreateUser } from '@/lib/api'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
-      <PlayerContextWrapper>
-        {children}
-      </PlayerContextWrapper>
+      <ToastProvider>
+        <PlayerContextWrapper>
+          {children}
+        </PlayerContextWrapper>
+      </ToastProvider>
     </AuthProvider>
   )
 }
