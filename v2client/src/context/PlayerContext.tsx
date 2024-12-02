@@ -1,131 +1,131 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback, useEffect } from 'react'
-import { getQueue, addToQueue, removeFromQueue, clearQueue } from '@/lib/api'
+import { createContext, useContext, useState, useEffect } from 'react'
+import { useAuth } from '@/hooks/useAuth'
+import { getQueue, addToQueue as addToQueueApi, removeFromQueue as removeFromQueueApi, clearQueue as clearQueueApi } from '@/lib/api'
 import type { Song } from '@/types/music'
 
 interface PlayerContextType {
-  queue: Song[]
   currentSong: Song | null
+  queue: Song[]
   isPlaying: boolean
   addToQueue: (song: Song) => Promise<void>
-  removeFromQueue: (songId: string) => void
+  removeFromQueue: (songId: string) => Promise<void>
   clearQueue: () => Promise<void>
+  playFromQueue: (song: Song) => void
   playSong: (song: Song) => void
+  togglePlayPause: () => void
   nextSong: () => void
   previousSong: () => void
-  togglePlay: () => void
   refetchQueue: () => Promise<void>
-  playFromQueue: (song: Song) => void
 }
 
 const PlayerContext = createContext<PlayerContextType | null>(null)
 
-export function PlayerProvider({ children, userId }: { children: React.ReactNode, userId: string }) {
-  const [queue, setQueue] = useState<Song[]>([])
+export function PlayerProvider({ children }: { children: React.ReactNode }) {
   const [currentSong, setCurrentSong] = useState<Song | null>(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [queue, setQueue] = useState<Song[]>([])
   const [isPlaying, setIsPlaying] = useState(false)
+  const { userId } = useAuth()
 
-  // Load initial queue
+  // Fetch queue on mount and when userId changes
   useEffect(() => {
     if (userId) {
-      getQueue(userId).then(setQueue)
+      refetchQueue()
     }
   }, [userId])
 
-  const refetchQueue = useCallback(async () => {
-    if (userId) {
-      const newQueue = await getQueue(userId)
-      setQueue(newQueue)
-    }
-  }, [userId])
-
-  const addSongToQueue = useCallback(async (song: Song) => {
+  const refetchQueue = async () => {
+    if (!userId) return
     try {
-      await addToQueue(userId, song.id.toString())
+      const queueData = await getQueue(userId)
+      setQueue(queueData)
+    } catch (error) {
+      console.error('Failed to fetch queue:', error)
+    }
+  }
+
+  const addToQueue = async (song: Song) => {
+    if (!userId) return
+    try {
+      await addToQueueApi(userId, song.id.toString())
       await refetchQueue()
     } catch (error) {
       console.error('Failed to add to queue:', error)
     }
-  }, [userId, refetchQueue])
+  }
 
-  const removeSongFromQueue = useCallback(async (songId: string) => {
+  const removeFromQueue = async (songId: string) => {
+    if (!userId) return
     try {
-      await removeFromQueue(userId, songId)
+      await removeFromQueueApi(userId, songId)
       await refetchQueue()
     } catch (error) {
       console.error('Failed to remove from queue:', error)
     }
-  }, [userId, refetchQueue])
+  }
 
-  const clearEntireQueue = useCallback(async () => {
+  const clearQueue = async () => {
+    if (!userId) return
     try {
-      await clearQueue(userId)
+      await clearQueueApi(userId)
       setQueue([])
-      setCurrentSong(null)
-      setCurrentIndex(0)
-      setIsPlaying(false)
     } catch (error) {
       console.error('Failed to clear queue:', error)
     }
-  }, [userId])
+  }
 
-  const playFromQueue = useCallback((song: Song) => {
+  const playFromQueue = (song: Song) => {
     setCurrentSong(song)
     setIsPlaying(true)
-    const index = queue.findIndex(s => s.id === song.id)
-    if (index !== -1) {
-      setCurrentIndex(index)
-    }
-  }, [queue])
+  }
 
-  const playSong = useCallback((song: Song) => {
+  const playSong = (song: Song) => {
     setCurrentSong(song)
     setIsPlaying(true)
-    const songInQueue = queue.some(s => s.id === song.id)
-    if (!songInQueue) {
-      addSongToQueue(song)
-    }
-    const index = queue.findIndex(s => s.id === song.id)
-    if (index !== -1) {
-      setCurrentIndex(index)
-    }
-  }, [queue, addSongToQueue])
+  }
 
-  const nextSong = useCallback(() => {
-    if (currentIndex < queue.length - 1) {
-      setCurrentIndex(prev => prev + 1)
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  const nextSong = () => {
+    if (!currentSong || queue.length === 0) return
+    const currentIndex = queue.findIndex(song => song.id === currentSong.id)
+    if (currentIndex === -1 || currentIndex === queue.length - 1) {
+      setCurrentSong(queue[0])
+    } else {
       setCurrentSong(queue[currentIndex + 1])
     }
-  }, [currentIndex, queue])
+  }
 
-  const previousSong = useCallback(() => {
-    if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1)
+  const previousSong = () => {
+    if (!currentSong || queue.length === 0) return
+    const currentIndex = queue.findIndex(song => song.id === currentSong.id)
+    if (currentIndex === -1 || currentIndex === 0) {
+      setCurrentSong(queue[queue.length - 1])
+    } else {
       setCurrentSong(queue[currentIndex - 1])
     }
-  }, [currentIndex, queue])
-
-  const togglePlay = useCallback(() => {
-    setIsPlaying(prev => !prev)
-  }, [])
+  }
 
   return (
-    <PlayerContext.Provider value={{
-      queue,
-      currentSong,
-      isPlaying,
-      addToQueue: addSongToQueue,
-      removeFromQueue: removeSongFromQueue,
-      clearQueue: clearEntireQueue,
-      playSong,
-      nextSong,
-      previousSong,
-      togglePlay,
-      refetchQueue,
-      playFromQueue
-    }}>
+    <PlayerContext.Provider
+      value={{
+        currentSong,
+        queue,
+        isPlaying,
+        addToQueue,
+        removeFromQueue,
+        clearQueue,
+        playFromQueue,
+        playSong,
+        togglePlayPause,
+        nextSong,
+        previousSong,
+        refetchQueue
+      }}
+    >
       {children}
     </PlayerContext.Provider>
   )

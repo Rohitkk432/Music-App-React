@@ -2,10 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
 @layer base {
   body {
-    @apply bg-black text-white antialiased;
+    @apply bg-[#070709];
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply max-w-6xl mx-auto px-4 py-8;
+  }
+
+  .page-header {
+    @apply flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8;
+  }
+
+  .page-title {
+    @apply text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 
+           bg-clip-text text-transparent;
+  }
+
+  .page-subtitle {
+    @apply text-gray-400 mt-1;
+  }
+
+  .content-grid {
+    @apply space-y-2;
+  }
+
+  .action-button {
+    @apply flex items-center justify-center gap-2 px-6 py-2.5
+           bg-gradient-to-r from-blue-500 to-purple-500 
+           hover:from-blue-600 hover:to-purple-600
+           rounded-lg transition-all duration-300 
+           hover:scale-[1.02] w-full sm:w-auto;
   }
 }
 

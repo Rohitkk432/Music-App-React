@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { usePlayer } from '@/context/PlayerContext'
 import MainLayout from '@/components/layout/MainLayout'
 import { getPlaylist, removeFromPlaylist, addPlaylistToQueue } from '@/lib/api'
-import { PlayIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { PlayIcon, XMarkIcon, MusicalNoteIcon } from '@heroicons/react/24/solid'
 import type { PlaylistItem } from '@/types/music'
 
 export default function PlaylistPage() {
@@ -73,22 +73,27 @@ export default function PlaylistPage() {
 
   return (
     <MainLayout>
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        {/* Header with Toggle */}
-        <div className="flex flex-col gap-4 mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold">Your Playlist</h1>
-          
-          <div className="flex flex-col sm:flex-row gap-3">
+      <div className="page-container">
+        {/* Header */}
+        <div className="page-header">
+          <div>
+            <h1 className="page-title">Your Playlists</h1>
+            <p className="page-subtitle">
+              {playlists[currentPlaylist]?.length || 0} songs
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
             {/* Playlist Toggle */}
-            <div className="flex rounded-lg overflow-hidden bg-gray-800 w-full sm:w-auto">
+            <div className="flex rounded-xl overflow-hidden bg-surface border border-gray-800">
               {['1', '2', '3'].map((num) => (
                 <button
                   key={num}
                   onClick={() => setCurrentPlaylist(num)}
-                  className={`flex-1 sm:flex-none px-4 py-2.5 text-sm font-medium transition-colors
+                  className={`flex-1 sm:flex-none px-6 py-2.5 text-sm font-medium transition-all duration-300
                     ${currentPlaylist === num 
-                      ? 'bg-blue-600 text-white' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-700'}`}
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white' 
+                      : 'text-gray-400 hover:text-white hover:bg-surface-hover'}`}
                 >
                   Playlist {num}
                 </button>
@@ -99,58 +104,92 @@ export default function PlaylistPage() {
             {playlists[currentPlaylist]?.length > 0 && (
               <button
                 onClick={handlePlayPlaylist}
-                className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 
-                         hover:bg-blue-700 rounded-lg text-sm transition-colors w-full sm:w-auto"
+                className="action-button"
               >
-                <PlayIcon className="w-4 h-4" />
+                <PlayIcon className="w-5 h-5" />
                 Play All
               </button>
             )}
           </div>
         </div>
 
-        {/* Playlist Content */}
+        {/* Content */}
         {loading ? (
-          <div className="text-center py-8">Loading...</div>
+          <div className="flex items-center justify-center py-12">
+            <div className="w-10 h-10 border-2 border-blue-500 border-t-transparent 
+                         rounded-full animate-spin" />
+          </div>
         ) : (
-          <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6">
-            <div className="space-y-2 sm:space-y-3">
-              {playlists[currentPlaylist]?.length === 0 ? (
-                <p className="text-center text-gray-400 py-8">
-                  This playlist is empty
-                </p>
+          <div className="bg-surface/50 rounded-xl p-4 sm:p-6 border border-gray-800/50">
+            <div className="content-grid">
+              {!playlists[currentPlaylist]?.length ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-xl bg-surface-active 
+                               flex items-center justify-center">
+                    <MusicalNoteIcon className="w-8 h-8 text-gray-600" />
+                  </div>
+                  <p className="text-gray-400 mb-2">
+                    This playlist is empty
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    Add songs to start playing
+                  </p>
+                </div>
               ) : (
-                playlists[currentPlaylist].map((song) => {
-                  return (
-                    <div 
-                      key={song.id}
-                      className="flex items-center gap-3 p-2 sm:p-3 bg-gray-700/30 
-                               rounded-lg group hover:bg-gray-700/50 transition-colors"
-                    >
-                      <img 
-                        src={song.imgpath} 
-                        alt={song.title}
-                        className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-medium text-sm truncate">
+                playlists[currentPlaylist].map((song) => (
+                  <div 
+                    key={song.id}
+                    className="flex items-center justify-between p-3 bg-surface 
+                             hover:bg-surface-hover rounded-xl transition-all duration-300
+                             hover:scale-[1.01] group border border-gray-800/50"
+                  >
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      <div className="relative group/play">
+                        <img 
+                          src={song.imgpath} 
+                          alt={song.title}
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl object-cover 
+                                   shadow-lg transition-transform duration-300
+                                   group-hover/play:scale-105"
+                        />
+                        <button
+                          onClick={() => playFromQueue(song)}
+                          className="absolute inset-0 flex items-center justify-center 
+                                   bg-background/90 opacity-0 group-hover/play:opacity-100 
+                                   transition-all duration-300 rounded-xl
+                                   ring-2 ring-accent-blue/0 group-hover/play:ring-accent-blue"
+                          title="Play"
+                        >
+                          <PlayIcon className="w-6 h-6 transform scale-90 
+                                           group-hover/play:scale-100 transition-transform" />
+                        </button>
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-medium text-sm truncate text-white">
                           {song.title}
                         </h3>
-                        <p className="text-xs sm:text-sm text-gray-400 truncate">
+                        <p className="text-xs text-gray-400 truncate">
                           {song.singer}
                         </p>
                       </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm text-gray-400 hidden sm:block">
+                        {song.duration}
+                      </span>
                       <button
                         onClick={() => handleRemoveSong(song.id)}
                         className="p-2 text-gray-400 hover:text-red-500 
-                                 sm:opacity-0 sm:group-hover:opacity-100 transition-all"
+                                 transition-colors duration-300 rounded-lg
+                                 hover:bg-surface-active"
                         title="Remove from playlist"
                       >
                         <XMarkIcon className="w-5 h-5" />
                       </button>
                     </div>
-                  )
-                })
+                  </div>
+                ))
               )}
             </div>
           </div>
