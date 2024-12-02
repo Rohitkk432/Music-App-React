@@ -107,7 +107,7 @@ export default function Queue() {
                           {song.duration}
                         </span>
                         <button
-                          onClick={() => removeFromQueue(song.id)}
+                          onClick={() => removeFromQueue(song.id.toString())}
                           className="p-1 hover:text-red-500 transition-colors"
                           title="Remove from queue"
                         >

@@ -2,7 +2,7 @@ import type { Song } from '@/types/music'
 
 export const songs: Song[] = [
   {
-    id: "1",
+    id: 1,
     title: "Thunder",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625316/Imagine_Dragons_Thunder_papm98.mp3",
@@ -10,7 +10,7 @@ export const songs: Song[] = [
     duration: "00:03:24"
   },
   {
-    id: "2",
+    id: 2,
     title: "Demons",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625319/Imagine_Dragons_Demons_xaf5ri.mp3",
@@ -18,7 +18,7 @@ export const songs: Song[] = [
     duration: "00:03:56"
   },
   {
-    id: "3",
+    id: 3,
     title: "Radioactive",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625318/Imagine_Dragons_Radioactive_cqoemf.mp3",
@@ -26,7 +26,7 @@ export const songs: Song[] = [
     duration: "00:04:21"
   },
   {
-    id: "4",
+    id: 4,
     title: "Shots",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625313/Imagine_Dragons_Shots_r9vyfg.mp3",
@@ -34,7 +34,7 @@ export const songs: Song[] = [
     duration: "00:03:52"
   },
   {
-    id: "5",
+    id: 5,
     title: "Machine",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625313/Imagine_Dragons_Machine_g0k6y0.mp3",
@@ -42,7 +42,7 @@ export const songs: Song[] = [
     duration: "00:03:01"
   },
   {
-    id: "6",
+    id: 6,
     title: "Believer",
     singer: "Imagine Dragons",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625315/Imagine_Dragons_Believer_tld63x.mp3",
@@ -50,7 +50,7 @@ export const songs: Song[] = [
     duration: "00:03:36"
   },
   {
-    id: "7",
+    id: 7,
     title: "Rap God",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625314/Eminem_Rap_God_o9t78x.mp3",
@@ -58,7 +58,7 @@ export const songs: Song[] = [
     duration: "00:06:09"
   },
   {
-    id: "8",
+    id: 8,
     title: "Not Afraid",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625311/Eminem_Not_Afraid_ft7hto.mp3",
@@ -66,7 +66,7 @@ export const songs: Song[] = [
     duration: "00:04:18"
   },
   {
-    id: "9",
+    id: 9,
     title: "Lose Yourself",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625313/Eminem_Lose_Yourself_fhrcmz.mp3",
@@ -74,7 +74,7 @@ export const songs: Song[] = [
     duration: "00:05:23"
   },
   {
-    id: "10",
+    id: 10,
     title: "The Real Slim Shady",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625311/Eminem_The_Real_Slim_Shady_pxymx4.mp3",
@@ -82,7 +82,7 @@ export const songs: Song[] = [
     duration: "00:04:28"
   },
   {
-    id: "11",
+    id: 11,
     title: "Mockingbird",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625311/Eminem_Mockingbird_ysazhk.mp3",
@@ -90,7 +90,7 @@ export const songs: Song[] = [
     duration: "00:04:17"
   },
   {
-    id: "12",
+    id: 12,
     title: "Till I Collapse",
     singer: "Eminem",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625312/Eminem_Till_I_Collapse_v7nck3.mp3",
@@ -98,7 +98,7 @@ export const songs: Song[] = [
     duration: "00:04:58"
   },
   {
-    id: "13",
+    id: 13,
     title: "Unravel",
     singer: "Lofi",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625319/Lofi_Unravel_w8qwrh.mp3",
@@ -106,7 +106,7 @@ export const songs: Song[] = [
     duration: "00:02:35"
   },
   {
-    id: "14",
+    id: 14,
     title: "Samidare",
     singer: "Lofi",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625318/Lofi_Samidare_l2x1ij.mp3",
@@ -114,7 +114,7 @@ export const songs: Song[] = [
     duration: "00:02:42"
   },
   {
-    id: "15",
+    id: 15,
     title: "Tanjiro no uta",
     singer: "Lofi",
     audiopath: "https://res.cloudinary.com/rohitkk432/video/upload/v1621625318/Lofi_Tanjiro_no_uta_mxdrmk.mp3",

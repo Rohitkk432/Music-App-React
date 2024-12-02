@@ -55,12 +55,11 @@ export default function PlaylistPage() {
     }
   }
 
-  const handleRemoveSong = async (songId: string) => {
+  const handleRemoveSong = async (songId: number) => {
     if (!userId) return
-    if (!songId) return
 
     try {
-      await removeFromPlaylist(userId, songId, Number(currentPlaylist))
+      await removeFromPlaylist(userId, songId.toString(), Number(currentPlaylist))
       setPlaylists(prev => ({
         ...prev,
         [currentPlaylist]: prev[currentPlaylist].filter(song => song.id !== songId)

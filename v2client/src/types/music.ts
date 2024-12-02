@@ -13,10 +13,7 @@ export interface Song {
     song_id: number;
   }
   
-  export interface PlaylistItem {
-    id: number;
-    user_id: number;
-    song_id: number;
+  export interface PlaylistItem extends Song {
     playlist_number: number;
   }
   

@@ -9,7 +9,7 @@ interface PlayerContextType {
   currentSong: Song | null
   isPlaying: boolean
   addToQueue: (song: Song) => Promise<void>
-  removeFromQueue: (songId: string) => Promise<void>
+  removeFromQueue: (songId: string) => void
   clearQueue: () => Promise<void>
   playSong: (song: Song) => void
   nextSong: () => void
@@ -43,7 +43,7 @@ export function PlayerProvider({ children, userId }: { children: React.ReactNode
 
   const addSongToQueue = useCallback(async (song: Song) => {
     try {
-      await addToQueue(userId, song.id)
+      await addToQueue(userId, song.id.toString())
       await refetchQueue()
     } catch (error) {
       console.error('Failed to add to queue:', error)

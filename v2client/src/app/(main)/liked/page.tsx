@@ -38,11 +38,11 @@ export default function LikedPage() {
     playSong(songs[0]) // Play the first song
   }
 
-  const handleUnlike = async (songId: string) => {
+  const handleUnlike = async (songId: number) => {
     if (!userId) return
 
     try {
-      await removeFromLiked(userId, songId)
+      await removeFromLiked(userId, songId.toString())
       setSongs(prev => prev.filter(song => song.id !== songId))
     } catch (error) {
       console.error('Failed to unlike song:', error)
@@ -57,15 +57,15 @@ export default function LikedPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold">Liked Songs</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold">Liked Songs</h1>
             <p className="text-gray-400 mt-1">{songs.length} songs</p>
           </div>
 
           {songs.length > 0 && (
             <button
               onClick={handlePlayAll}
-              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 
-                     hover:bg-blue-700 rounded-lg transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-blue-600 
+                     hover:bg-blue-700 rounded-lg transition-colors w-full sm:w-auto"
             >
               <PlayIcon className="w-5 h-5" />
               Play All
@@ -85,7 +85,7 @@ export default function LikedPage() {
             {songs.map((song) => (
               <div 
                 key={song.id}
-                className="flex items-center justify-between p-3 bg-gray-800/50 
+                className="flex items-center justify-between p-2 sm:p-3 bg-gray-800/50 
                          hover:bg-gray-700/50 rounded-lg transition-colors group"
               >
                 <div className="flex items-center gap-3 flex-1 min-w-0">
@@ -93,7 +93,7 @@ export default function LikedPage() {
                     <img 
                       src={song.imgpath} 
                       alt={song.title}
-                      className="w-12 h-12 rounded object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded object-cover"
                     />
                     <button
                       onClick={() => playSong(song)}
@@ -107,18 +107,18 @@ export default function LikedPage() {
                   </div>
                   <div className="min-w-0">
                     <h3 className="font-medium text-sm truncate">{song.title}</h3>
-                    <p className="text-sm text-gray-400 truncate">{song.singer}</p>
+                    <p className="text-xs sm:text-sm text-gray-400 truncate">{song.singer}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-400">
+                  <span className="text-sm text-gray-400 hidden sm:block">
                     {song.duration}
                   </span>
                   <button
                     onClick={() => handleUnlike(song.id)}
                     className="p-2 text-red-500 hover:bg-gray-600 rounded-full 
-                           transition-colors opacity-0 group-hover:opacity-100"
+                           transition-colors sm:opacity-0 sm:group-hover:opacity-100"
                     title="Unlike"
                   >
                     <HeartIcon className="w-5 h-5" />
