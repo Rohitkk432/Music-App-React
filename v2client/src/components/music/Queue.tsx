@@ -113,7 +113,7 @@ export default function Queue() {
                       <div className="flex items-center gap-3 flex-1 min-w-0">
                         <div className="relative group/play">
                           <img 
-                            src={song.imgpath} 
+                            src={song.imgpath || ''} 
                             alt={song.title}
                             className="w-10 h-10 rounded-lg object-cover shadow-lg 
                                      transition-transform duration-300

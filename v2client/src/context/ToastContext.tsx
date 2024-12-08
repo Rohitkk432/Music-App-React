@@ -1,55 +1,52 @@
 'use client'
 
-import { createContext, useContext, useState, useCallback, useEffect } from 'react'
-import { Toast } from '@/components/ui/Toast'
+import { createContext, useContext, useState } from 'react'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 
-type ToastType = 'success' | 'error' | 'info'
+interface Toast {
+  id: number
+  message: string
+  type: 'success' | 'error'
+}
 
 interface ToastContextType {
-  showToast: (message: string, type: ToastType) => void
+  showToast: (message: string, type: 'success' | 'error') => void
 }
 
 const ToastContext = createContext<ToastContextType | null>(null)
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
-  const [toast, setToast] = useState<{
-    message: string
-    type: ToastType
-    id: number
-  } | null>(null)
+  const [toasts, setToasts] = useState<Toast[]>([])
 
-  const showToast = useCallback((message: string, type: ToastType) => {
-    setToast({ message, type, id: Date.now() })
-  }, [])
-
-  const closeToast = useCallback(() => {
-    setToast(null)
-  }, [])
-
-  // Listen for custom toast events
-  useEffect(() => {
-    const handleToastEvent = (event: CustomEvent<{ message: string; type: ToastType }>) => {
-      showToast(event.detail.message, event.detail.type)
-    }
-
-    window.addEventListener('toast' as any, handleToastEvent as EventListener)
-
-    return () => {
-      window.removeEventListener('toast' as any, handleToastEvent as EventListener)
-    }
-  }, [showToast])
+  const showToast = (message: string, type: 'success' | 'error') => {
+    const id = Date.now()
+    setToasts(prev => [...prev, { id, message, type }])
+    setTimeout(() => {
+      setToasts(prev => prev.filter(toast => toast.id !== id))
+    }, 3000)
+  }
 
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      {toast && (
-        <Toast
-          key={toast.id}
-          message={toast.message}
-          type={toast.type}
-          onClose={closeToast}
-        />
-      )}
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+        {toasts.map(toast => (
+          <div
+            key={toast.id}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-white ${
+              toast.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            }`}
+          >
+            <span>{toast.message}</span>
+            <button
+              onClick={() => setToasts(prev => prev.filter(t => t.id !== toast.id))}
+              className="p-1 hover:bg-white/10 rounded"
+            >
+              <XMarkIcon className="w-4 h-4" />
+            </button>
+          </div>
+        ))}
+      </div>
     </ToastContext.Provider>
   )
 }

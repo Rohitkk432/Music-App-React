@@ -125,7 +125,7 @@ export default function Player() {
               {currentSong ? (
                 <>
                   <img 
-                    src={currentSong.imgpath} 
+                    src={currentSong.imgpath || ''} 
                     alt={currentSong.title}
                     className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover shadow-lg"
                   />

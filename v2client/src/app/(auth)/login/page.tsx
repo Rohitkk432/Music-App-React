@@ -1,12 +1,38 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
-import { MusicalNoteIcon } from '@heroicons/react/24/solid'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
 import GoogleLogo from './google-logo'
+import { MusicalNoteIcon } from '@heroicons/react/24/outline'
 
 export default function LoginPage() {
-  const handleGoogleLogin = () => {
-    signIn('google', { callbackUrl: '/home' })
+  const router = useRouter()
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (session) {
+        router.push('/home')
+      }
+    }
+    checkSession()
+  }, [router])
+
+  const handleGoogleLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        }
+      }
+    })
+
+    if (error) {
+      console.error('Error:', error.message)
+    }
   }
 
   return (
@@ -32,7 +58,6 @@ export default function LoginPage() {
           Welcome Back
         </h2>
 
-        {/* Google Login Button */}
         <button
           onClick={handleGoogleLogin}
           className="w-full flex items-center justify-center gap-3 px-6 py-3
@@ -47,25 +72,8 @@ export default function LoginPage() {
             Continue with Google
           </span>
         </button>
-
-        {/* Additional Info */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-gray-400">
-            By continuing, you agree to our{' '}
-            <a href="#" className="text-blue-400 hover:text-blue-300 
-                                transition-colors duration-300">
-              Terms of Service
-            </a>
-            {' '}and{' '}
-            <a href="#" className="text-blue-400 hover:text-blue-300 
-                                transition-colors duration-300">
-              Privacy Policy
-            </a>
-          </p>
-        </div>
       </div>
 
-      {/* Footer */}
       <footer className="mt-12 text-center">
         <p className="text-sm text-gray-500">
           © {new Date().getFullYear()} Music Pro X. All rights reserved.

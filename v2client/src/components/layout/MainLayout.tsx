@@ -2,17 +2,19 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { signOut } from 'next-auth/react'
-import { 
-  HomeIcon, 
-  HeartIcon, 
-  QueueListIcon,
-  ArrowRightOnRectangleIcon 
-} from '@heroicons/react/24/solid'
+import { HomeIcon, HeartIcon, QueueListIcon } from '@heroicons/react/24/solid'
 import Player from '@/components/music/Player'
 import Queue from '@/components/music/Queue'
+import AdminButton from '../admin/AdminButton'
+import SignOutButton from '../auth/SignOutButton'
+import PlaylistModal from '../music/PlaylistModal'
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+interface MainLayoutProps {
+  children: React.ReactNode
+  hidePlayer?: boolean
+}
+
+export default function MainLayout({ children, hidePlayer = false }: MainLayoutProps) {
   const pathname = usePathname()
 
   const navItems = [
@@ -33,12 +35,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     },
   ]
 
-  const handleLogout = async () => {
-    await signOut({ callbackUrl: '/login' })
-  }
-
   return (
-    <div className="min-h-screen pb-32">
+    <div className={`min-h-screen ${!hidePlayer ? 'pb-32' : ''}`}>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-surface/80 backdrop-blur-xl 
                     border-b border-gray-800/50">
@@ -53,7 +51,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               Music Pro X
             </Link>
 
-            {/* Nav Links & Logout */}
+            {/* Nav Links & Buttons */}
             <div className="flex items-center">
               {/* Nav Links */}
               <div className="flex items-center gap-1 mr-2 border-r border-gray-800 pr-2">
@@ -76,18 +74,11 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </div>
 
-              {/* Logout Button */}
-              <button
-                onClick={handleLogout}
-                className="p-2.5 rounded-lg transition-all duration-300 group
-                         text-gray-400 hover:text-red-400 hover:bg-surface-hover"
-                title="Logout"
-              >
-                <ArrowRightOnRectangleIcon 
-                  className="w-5 h-5 transition-transform duration-300
-                         group-hover:scale-105" 
-                />
-              </button>
+              {/* Admin & Sign Out Buttons */}
+              <div className="flex items-center gap-1">
+                <AdminButton />
+                <SignOutButton />
+              </div>
             </div>
           </div>
         </div>
@@ -98,9 +89,16 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         {children}
       </main>
 
+      {/* Add PlaylistModal */}
+      <PlaylistModal />
+      
       {/* Player & Queue */}
-      <Queue />
-      <Player />
+      {!hidePlayer && (
+        <>
+          <Queue />
+          <Player />
+        </>
+      )}
     </div>
   )
 }

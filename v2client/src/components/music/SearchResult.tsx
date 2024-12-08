@@ -72,7 +72,7 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
         <div className="flex items-center gap-3 flex-1 min-w-0">
           <div className="relative group/play">
             <img 
-              src={song.imgpath} 
+              src={song.imgpath || ''} 
               alt={song.title}
               className="w-12 h-12 rounded-xl object-cover shadow-lg"
             />
@@ -127,7 +127,7 @@ export default function SearchResult({ userId, ...song }: SearchResultProps) {
                       border border-gray-800/50 h-full">
           <div className="relative aspect-square mb-3 rounded-lg overflow-hidden">
             <img 
-              src={song.imgpath} 
+              src={song.imgpath || ''} 
               alt={song.title}
               className="w-full h-full object-cover"
             />

@@ -1,45 +1,45 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
-import { getOrCreateUser } from '@/lib/api'
-import type { Session } from 'next-auth'
+import { supabase } from '@/lib/supabase'
+import type { User } from '@supabase/supabase-js'
 
-interface AuthHook {
-  session: Session | null
-  loading: boolean
+interface AuthState {
+  user: User | null
   userId: string | null
+  loading: boolean
 }
 
-export function useAuth(): AuthHook {
-  const { data: session, status } = useSession()
-  const [userId, setUserId] = useState<string | null>(null)
-  const loading = status === 'loading'
+export function useAuth() {
+  const [state, setState] = useState<AuthState>({
+    user: null,
+    userId: null,
+    loading: true
+  })
 
   useEffect(() => {
-    async function initUser() {
-      if (session?.user?.email) {
-        try {
-          const user = await getOrCreateUser(session.user.email)
-          setUserId(user.id)
-          localStorage.setItem('userId', user.id)
-          localStorage.setItem('email', session.user.email)
-        } catch (error) {
-          console.error('Failed to init user:', error)
-        }
-      }
-    }
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setState({
+        user: session?.user ?? null,
+        userId: session?.user?.id ?? null,
+        loading: false
+      })
+    })
 
-    if (session?.user?.email) {
-      initUser()
-    } else {
-      // Try to get from localStorage if no session
-      const storedId = localStorage.getItem('userId')
-      if (storedId) {
-        setUserId(storedId)
-      }
-    }
-  }, [session?.user?.email])
+    // Listen for auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setState({
+        user: session?.user ?? null,
+        userId: session?.user?.id ?? null,
+        loading: false
+      })
+    })
 
-  return { session, loading, userId }
+    return () => subscription.unsubscribe()
+  }, [])
+
+  return state
 } 

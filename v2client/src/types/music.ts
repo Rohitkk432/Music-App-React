@@ -3,8 +3,9 @@ export interface Song {
     title: string;
     singer: string;
     audiopath: string;
-    imgpath: string;
+    imgpath: string | null;
     duration: string;
+    created_at: string;
   }
   
   export interface QueueItem {

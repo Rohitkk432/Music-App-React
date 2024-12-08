@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { usePlayer } from '@/context/PlayerContext'
 import { usePlaylistModal } from '@/context/PlaylistModalContext'
@@ -8,7 +8,7 @@ import { getLikedSongs, removeFromLiked } from '@/lib/api'
 import MainLayout from '@/components/layout/MainLayout'
 import SongCard from '@/components/music/SongCard'
 import Loading from '@/components/ui/Loading'
-import { PlayIcon } from '@heroicons/react/24/solid'
+import { PlayIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import type { Song } from '@/types/music'
 
 export default function LikedPage() {
@@ -82,9 +82,29 @@ export default function LikedPage() {
             </button>
           )}
         </div>
-        
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        {/* Mobile: List View */}
+        <div className="sm:hidden space-y-2">
+          {songs.map((song) => (
+            <SongCard
+              key={song.id}
+              song={song}
+              isLiked={true}
+              onPlay={() => playSong(song)}
+              onAddToQueue={() => addToQueue(song)}
+              onAddToPlaylist={() => openPlaylistModal(song)}
+              onLike={() => handleUnlike(song.id.toString())}
+            />
+          ))}
+          {songs.length === 0 && (
+            <p className="text-gray-400 text-center py-8">
+              No liked songs yet
+            </p>
+          )}
+        </div>
+
+        {/* Desktop: Grid View */}
+        <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {songs.length === 0 ? (
             <div className="col-span-full text-center text-gray-400 py-8">
               No liked songs yet
@@ -93,8 +113,7 @@ export default function LikedPage() {
             songs.map(song => (
               <SongCard
                 key={song.id}
-                {...song}
-                userId={userId}
+                song={song}
                 isLiked={true}
                 onPlay={() => playSong(song)}
                 onAddToQueue={() => addToQueue(song)}
