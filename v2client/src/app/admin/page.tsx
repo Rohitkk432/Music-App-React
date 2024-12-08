@@ -18,6 +18,8 @@ const formatFileName = (fileName: string) => {
   return fileName
 }
 
+export const dynamic = 'force-dynamic'
+
 export default function AdminPage() {
   const router = useRouter()
   const { showToast } = useToast()

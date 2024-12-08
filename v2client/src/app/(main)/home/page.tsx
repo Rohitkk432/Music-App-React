@@ -9,6 +9,8 @@ import SongCard from '@/components/music/SongCard'
 import Loading from '@/components/ui/Loading'
 import { useToast } from '@/context/ToastContext'
 
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   const [songs, setSongs] = useState<Song[]>([])
   const [loading, setLoading] = useState(true)

@@ -25,6 +25,9 @@ const nextConfig = {
     })
     return config
   },
+  // Remove experimental.appDir as it's no longer needed in Next.js 14
+  // Add dynamic route handling
+  output: 'standalone',
 }
 
 module.exports = nextConfig 

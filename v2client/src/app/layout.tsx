@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "A modern music player built with Next.js",
 };
 
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({
   children,
 }: {

@@ -12,6 +12,8 @@ import { usePlaylistModal } from '@/context/PlaylistModalContext'
 import { PlayIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useToast } from '@/context/ToastContext'
 
+export const dynamic = 'force-dynamic'
+
 export default function PlaylistPage() {
   const [songs, setSongs] = useState<Record<number, Song[]>>({
     1: [],

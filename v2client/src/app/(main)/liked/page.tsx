@@ -11,6 +11,8 @@ import Loading from '@/components/ui/Loading'
 import { PlayIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import type { Song } from '@/types/music'
 
+export const dynamic = 'force-dynamic'
+
 export default function LikedPage() {
   const [songs, setSongs] = useState<Song[]>([])
   const { loading, userId } = useAuth()
